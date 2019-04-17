@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- 设置浏览器默认急速模式 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit"/>
+    <!-- 禁止edge浏览器数字识别为号码添加链接 -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- 标题栏： -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon">
+    <!-- 收藏夹： -->
+    <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon">
+    <title>智慧旅游舆情平台</title>
+    <style type="text/css">
+        html,
+        body,
+        #app {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chromeframe {
+            margin: 0.2em 0;
+            background: #ccc;
+            color: #000;
+            padding: 0.2em 0;
+        }
+
+        #sx-loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+        }
+
+        #sx-loader-wrapper #loader {
+            display: block;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            /* COLOR 1 */
+            border-top-color: #C9534D;
+            -webkit-animation: spin 2s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -ms-animation: spin 2s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -moz-animation: spin 2s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -o-animation: spin 2s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            animation: spin 2s linear infinite;
+            /* Chrome, Firefox 16+, IE 10+, Opera */
+            z-index: 1001;
+        }
+
+        #sx-loader-wrapper #loader:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            /* COLOR 2 */
+            border-top-color: #F8CA5B;
+            -webkit-animation: spin 3s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -moz-animation: spin 3s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -o-animation: spin 3s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -ms-animation: spin 3s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            animation: spin 3s linear infinite;
+            /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+
+        #sx-loader-wrapper #loader:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #1580FF;
+            /* COLOR 3 */
+            -moz-animation: spin 1.5s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -o-animation: spin 1.5s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -ms-animation: spin 1.5s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            -webkit-animation: spin 1.5s linear infinite;
+            /* Chrome, Opera 15+, Safari 5+ */
+            animation: spin 1.5s linear infinite;
+            /* Chrome, Firefox 16+, IE 10+, Opera */
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);
+                /* IE 9 */
+                transform: rotate(0deg);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);
+                /* IE 9 */
+                transform: rotate(360deg);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(0deg);
+                /* IE 9 */
+                transform: rotate(0deg);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                /* Chrome, Opera 15+, Safari 3.1+ */
+                -ms-transform: rotate(360deg);
+                /* IE 9 */
+                transform: rotate(360deg);
+                /* Firefox 16+, IE 10+, Opera */
+            }
+        }
+
+        #sx-loader-wrapper .loader-section {
+            position: fixed;
+            top: 0;
+            width: 51%;
+            height: 100%;
+            background: #304156;
+            /* Old browsers */
+            z-index: 1000;
+            -webkit-transform: translateX(0);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateX(0);
+            /* IE 9 */
+            transform: translateX(0);
+            /* Firefox 16+, IE 10+, Opera */
+        }
+
+        #sx-loader-wrapper .loader-section.section-left {
+            left: 0;
+        }
+
+        #sx-loader-wrapper .loader-section.section-right {
+            right: 0;
+        }
+
+        /* Loaded */
+        .loaded #sx-loader-wrapper .loader-section.section-left {
+            -webkit-transform: translateX(-100%);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateX(-100%);
+            /* IE 9 */
+            transform: translateX(-100%);
+            /* Firefox 16+, IE 10+, Opera */
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .loaded #sx-loader-wrapper .loader-section.section-right {
+            -webkit-transform: translateX(100%);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateX(100%);
+            /* IE 9 */
+            transform: translateX(100%);
+            /* Firefox 16+, IE 10+, Opera */
+            -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .loaded #sx-loader-wrapper #loader {
+            opacity: 0;
+            -webkit-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .loaded #sx-loader-wrapper {
+            visibility: hidden;
+            -webkit-transform: translateY(-100%);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: translateY(-100%);
+            /* IE 9 */
+            transform: translateY(-100%);
+            /* Firefox 16+, IE 10+, Opera */
+            -webkit-transition: all 0.3s 1s ease-out;
+            transition: all 0.3s 1s ease-out;
+        }
+
+        #sx-loader-wrapper .load_title {
+            color: #FFF;
+            font-size: 19px;
+            width: 100%;
+            text-align: center;
+            z-index: 9999999999999;
+            position: absolute;
+            top: 60%;
+            opacity: 1;
+            line-height: 30px;
+        }
+
+        #sx-loader-wrapper .load_title span {
+            font-weight: normal;
+            font-style: italic;
+            font-size: 13px;
+            color: #FFF;
+            opacity: 0.5;
+        }
+
+        /* JavaScript Turned Off */
+        .no-js #sx-loader-wrapper {
+            display: none;
+        }
+
+        .no-js h1 {
+            color: #222222;
+        }
+
+    </style>
+</head>
+<body>
+<noscript>
+    <strong>很抱歉，如果没有启用JavaScript，综合计划系统将无法正常运行。请启用它以继续使用。</strong>
+</noscript>
+<div id="app">
+    <div id="sx-loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="load_title">正在加载 旅游大屏,请耐心等待
+            <br>
+            <span>V0.1.0</span>
+        </div>
+    </div>
+</div>
+<!-- built files will be auto injected -->
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=qiXFG8xtbU5jLsIprAXK44Mx9cyi9Gn9"></script>
+<script type="text/javascript">
+    (function (window) {
+        var theUA = window.navigator.userAgent.toLowerCase();
+        if ((theUA.match(/msie\s\d+/) && theUA.match(/msie\s\d+/)[0]) || (theUA.match(/trident\s?\d+/) && theUA.match(/trident\s?\d+/)[0])) {
+            var ieVersion = theUA.match(/msie\s\d+/)[0].match(/\d+/)[0] || theUA.match(/trident\s?\d+/)[0];
+            console.log('ieVersion', ieVersion);
+            if (ieVersion < 10) {
+                var str = "你的IE浏览器版本太低\n已经和时代脱轨了 :(";
+                var str2 = "推荐使用:<a href='https://www.baidu.com/s?ie=UTF-8&wd=%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8' target='_blank' style='color:#cc0'>谷歌浏览器</a>,"
+                    + "<a href='https://www.baidu.com/s?ie=UTF-8&wd=%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8' target='_blank' style='color:#cc0'>火狐浏览器</a>,"
+                    + "<a href='https://www.baidu.com/s?ie=UTF-8&wd=360%E6%B5%8F%E8%A7%88%E5%99%A8' target='_blank' style='color:#cc0'>360浏览器</a>,Edge浏览器或者IE10版本以上浏览器";
+                document.getElementById('app').innerHTML = "<div style='text-align:center;color:#fff;background-color:#0863B3; height:100%;border:0;position:fixed;top:0;left:0;width:100%;z-index:1234'>" +
+                    "<h2 style='padding-top:200px;margin:0'><strong>" + str + "<br/></strong></h2><p>" +
+                    str2 + "</p><h2 style='margin:0'><strong>如果你的使用的是双核浏览器,请切换到极速模式访问<br/></strong></h2></div>";
+                document.execCommand("Stop");
+            }
+        }
+    })(window);
+</script>
+</body>
+</html>
