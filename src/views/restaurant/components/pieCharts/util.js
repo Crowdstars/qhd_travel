@@ -79,7 +79,7 @@ export const optionData = {
                     color: "#465376",
                 },
             }],
-        }, 
+        },
         {
             radius: ['1%', '3%'],
             center: ['75%', '55%'],
@@ -96,7 +96,7 @@ export const optionData = {
                     color: "#fff",
                 },
             }],
-        }, 
+        },
         {
             radius: ['3%', '6%'],
             center: ['75%', '55%'],
@@ -113,7 +113,7 @@ export const optionData = {
                     color: "#fff",
                 },
             }],
-        }, 
+        },
         {
             name: '外边框',
             type: 'pie',
@@ -149,7 +149,7 @@ export const optionData1 = {
     color: ['#4CDCFF', '#AEFF33', '#ECFF0A', '#9494FF', '#F5D001'],
     grid: {
         top: 0,
-        bottom: 10,
+        bottom: 0,
         left: 0,
         right: 0,
         containLabel: true,
@@ -187,9 +187,9 @@ export const optionData1 = {
     series: [
         // 主要展示层的
         {
-            selectedMode: 'single',
+            selectedMode: 'multiple',
             radius: ['15%', '30%'],
-            center: ['25%', '55%'],
+            center: ['75%', '55%'],
             type: 'pie',
             zlevel: 10,
             label: {

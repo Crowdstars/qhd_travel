@@ -61,35 +61,32 @@
             //设置图表数据
             loadChart() {
                 getShopKeyData().then(res => {
-                    console.log(res.commentTrendModel[0]);
-                    let data = (res.commentTrendModel[0]).valueList.map((item, index) => {
-                        if (item.name === "评论数量") {
-                            let innerdata = item.data.map((d, i) => {
-                               console.log(typeof d);
-                                return d.toString().slice(0, -1)
-                            });
-                            return {
-                                data: innerdata,
-                                name: item.name,
-                                type: item.type,
-                            };
-                        }
+
+                      this.option.series = [];
+                    let data = res.commentTrendModel.valueList.map((item, index) => {
+
+                        this.option.series.push(item);
                         return item;
+
                     });
                     data.map((item, index) => {
+
                         this.option.series.map((d, i) => {
+
                             if (d.name === item.name) {
                                 d.data = item.data
                             }
 
                         })
                     });
+
                     this.option.xAxis[0].data = res.commentTrendModel.timeList;
                     this.initChart();
                     this.resize();
                 })
             },
             initChart() {
+
                 this.chart = echarts.init(document.getElementById(this.id));
                 this.chart.setOption(this.option, true)
             },

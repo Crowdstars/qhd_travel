@@ -17,7 +17,7 @@
             <el-row class="elLBgd" :style="{'padding': contentHeight * 0.05 + 'px'}">
                 <el-col :lg='24' :xl="24">
                     <el-row class="elBorder">
-                        <el-col :lg='8' :xl="8">景点</el-col>
+                        <el-col :lg='8' :xl="8">景区</el-col>
                         <el-col :lg='8' :xl="8">评分</el-col>
                         <el-col :lg='8' :xl="8">评论数</el-col>
                     </el-row>

@@ -42,36 +42,97 @@
       </el-row>
     </el-col>
 
-
     <!--echarts图-->
-    <el-col :lg="10" :xl="10" class="elContent">
+    <el-col :lg="8" :xl="8" class="elContent">
       <!--标题-->
-      <el-row
-              type="flex"
-              justify="start"
-              align="middle"
-              class="elBgd"
-              ref="chartTitleHeight"
-              :style="{'padding': contentHeight * 0.05 + 'px'}"
-      >
-        <el-col :lg="2" :xl="2">
-          <img
-                  class="elImage"
-                  :width="contentHeight * 0.15 + 'px'"
-                  src="../../../assets/screenImage/barIcon.png"
-          >
+      <el-row type="flex" justify="start" align="middle" class="elBgd" ref="chartTitleHeight"
+              :style="{'padding': contentHeight * 0.05 + 'px'}">
+        <el-col :lg='2' :xl="2">
+          <img class="elImage" :width="contentHeight * 0.15 + 'px'"
+               src="../../../assets/screenImage/barIcon.png">
         </el-col>
-        <el-col :lg="14" :xl="14" class="elTitle">景点评论数变化图</el-col>
+        <el-col :lg='14' :xl="14" class="elTitle">餐饮评论数变化图</el-col>
       </el-row>
       <!--内容-->
       <el-row class="elCtBgd" :style="{'padding': contentHeight * 0.05 + 'px'}">
-        <el-col :lg="24" :xl="24">
+        <el-col :lg='24' :xl="24">
           <line-charts :id="restaurantDetailsId" :height="centerChartHeight*0.9 + 'px'"></line-charts>
+        </el-col>
+      </el-row>
+    </el-col>
+
+
+
+    <el-col :lg="8" :xl="8" class="elContent">
+      <el-row>
+        <el-col :lg="12" :xl="12">
+          <!--标题-->
+          <el-row
+                  type="flex"
+                  justify="start"
+                  align="middle"
+                  class="elBgd"
+                  ref="chartTitleHeight"
+                  :style="{'padding': contentHeight * 0.05 + 'px'}"
+          >
+            <el-col :lg="3" :xl="3">
+              <img
+                      class="elImage"
+                      :width="contentHeight * 0.15 + 'px'"
+                      src="../../../assets/screenImage/pieIcon.png"
+              >
+            </el-col>
+            <el-col :lg="18" :xl="18" class="elTitle threeTip">餐饮评论数分布</el-col>
+          </el-row>
+          <!--内容-->
+          <el-row class="elCtBgd">
+            <el-col :lg="24" :xl="24" class="chartFontSizeStyle">
+              <pie-charts
+                      :id="RestNumId"
+                      :restNumData="data1"
+                      :height="centerChartHeight * 0.95 + 'px'"
+              >
+                <!-- <span class="one">酒店</span> -->
+
+              </pie-charts>
+            </el-col>
+          </el-row>
+        </el-col>
+        <el-col :lg="12" :xl="12">
+          <!--标题-->
+          <el-row
+                  type="flex"
+                  justify="start"
+                  align="middle"
+                  class="elBgd"
+                  :style="{'padding': contentHeight * 0.05 + 'px'}"
+          >
+            <el-col :lg="3" :xl="3">
+              <img
+                      class="elImage"
+                      :width="contentHeight * 0.15 + 'px'"
+                      src="../../../assets/screenImage/pieIcon.png"
+              >
+            </el-col>
+            <el-col :lg="18" :xl="18" class="elTitle threeTip">餐饮评分分布</el-col>
+          </el-row>
+          <!--内容-->
+          <el-row class="elCtBgd">
+            <el-col :lg="24" :xl="24" class="chartFontSizeStyle">
+              <pies-chart
+                      :id="RestScoreId"
+                      :restScoreData="data2"
+                      :height="centerChartHeight * 0.95 + 'px'"
+              >
+              </pies-chart>
+            </el-col>
+          </el-row>
         </el-col>
       </el-row>
     </el-col>
   </el-row>
 </template>
+
 <script>
   import LineCharts from "../components/lineCharts/LineCharts";
   import PiesChart from "../components/pieCharts/PiesChart";
@@ -101,7 +162,7 @@
       return {
         centerChartHeight: 100,
         //元素高度
-        restaurantDetailsId: "spotHotChangeChart",
+        restaurantDetailsId: "restaurantHotChangeChart",
         textScoreContentHeight: 0,
         //关键指标数据
         keyIndicatorData: {
@@ -123,17 +184,32 @@
           isYearNumRise: 0,
 
 
-        }
+        },
+        //图表id
+        RestScoreId: IdData.RestScoreId,
+        RestNumId: IdData.RestNumId,
+        //图表数据
+        data1: [],
+        data2: []
       }
     },
     methods: {
+      //求和
+      returnSum(data) {
+        let sum = 0;
+        data.map((item, index) => {
+          sum += item.value;
+        });
+        return sum
+      },
       //获取关键指标数据
       getKeyIndicatorFun: function () {
         getShopKeyData().then(res => {
-          console.log(res);
+
           if (res.code === 0) {
-            this.keyIndicatorData = res.commentKeyIndicatorModel[0];
-            console.log(this.keyIndicatorData);
+            this.keyIndicatorData = res.commentKeyIndicatorModel;
+
+
           } else {
             this.$Message.error(res.message);
           }
@@ -149,7 +225,6 @@
             })
           })
         });
-
       },
       //设置酒店餐馆评分
       SetOptionRestScoreData() {
@@ -163,6 +238,7 @@
           })
         });
       },
+
       //初始化图表高度
       loadCenterChartHeight() {
         this.centerChartHeight = this.contentHeight - this.$refs.chartTitleHeight.$el.clientHeight;
@@ -199,14 +275,16 @@
     mounted() {
       let self = this;
       this.getKeyIndicatorFun();
+      this.SetOptionRestNumData();
+      this.SetOptionRestScoreData();
       this.$nextTick(() => {
-        self.textScoreContentHeight = self.$refs.textScoreContent.$el.clientHeight;
+        this.centerChartHeight = this.contentHeight - this.$refs.chartTitleHeight.$el.clientHeight;
         /** 自适应页面高度 */
         this.__resizeHandler = debounce(() => {
-          self.textScoreContentHeight = self.$refs.textScoreContent.$el.clientHeight;
+          self.loadCenterChartHeight();
         }, 100);
         window.addEventListener('resize', this.__resizeHandler);
-      })
+      });
     },
     beforeDestroy() {
       window.removeEventListener('resize', this.__resizeHandler);

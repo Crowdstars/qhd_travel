@@ -43,7 +43,8 @@
         watch: {
                 restScoreData: {
                 handler: function (newVal) {
-                    this.option.series[0].data = newVal ;
+                    this.option.series[0].data = newVal;
+                    console.log(this.option);
                     this.initChart();
                 },
                 deep: true,

@@ -76,12 +76,7 @@
                          src="../../../assets/screenImage/icon_restaurant_list.png">
                 </el-col>
                 <el-col :lg='14' :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
-                <el-col :lg='8' :xl="8" class="elFontSize">
-                    <!-- <a :href="foodDetailUrl" target="_blank">查看详情</a> -->
-                    <router-link to="/restaurant" :class="{'router-link-active':$route.name === 'Restaurant'}">
-                        查看详情
-                    </router-link>
-                </el-col>
+                <el-col :lg='8' :xl="8" class="elFontSize"><a :href="foodDetailUrl" target="_blank">查看详情</a></el-col>
             </el-row>
             <!--内容-->
             <el-row class="elCtBgd"
@@ -158,11 +153,10 @@
             scenicSpotDetailUrl() {
                 return this.$config.detailUrl + '/ScenicInfo?scenicName=千岛湖&token=' + getToken();
             },
-            // //餐饮详情链接
-            // foodDetailUrl() {
-            //     return this.$config.detailUrl + '/shopList?token=' + getToken();
-            //     // return this.$router.path('/restaurant');
-            // },
+            //餐饮详情链接
+            foodDetailUrl() {
+                return this.$config.detailUrl + '/shopList?token=' + getToken();
+            }
         },
         methods: {
             //获取景区排行列表

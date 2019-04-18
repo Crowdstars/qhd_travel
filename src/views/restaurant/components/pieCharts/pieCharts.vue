@@ -29,6 +29,7 @@
                 type: String,
                 default: '300px'
             },
+
             restNumData: {
                 type: Array,
                 default: () => []
@@ -42,8 +43,11 @@
             }
         },
         watch: {
+
             restNumData: {
                 handler: function (newVal) {
+                    console.log(12345);
+                    console.log(newVal);
                     this.option.series[0].data = newVal ;
                     this.initChart();
                 },

@@ -55,6 +55,8 @@
             },
             restNumData: {
                 handler: function (newVal) {
+                    console.log(112233445);
+                    console.log(newVal);
                     this.option.series[5].data = newVal ;
                     this.initChart();
                 },
@@ -72,6 +74,7 @@
             }
         },
         mounted() {
+
             this.initChart();
             this.resize();
 

@@ -64,7 +64,6 @@
                     let data = res.data.valuelist.map((item, index) => {
                         if (item.name === "同比") {
                             let innerdata = item.data.map((d, i) => {
-                                console.log(typeof d);
                                 return d.slice(0, -1)
                             });
                             return {

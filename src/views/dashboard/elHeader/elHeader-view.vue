@@ -111,7 +111,7 @@
                 textScoreContentHeight: 0,
                 //关键指标数据
                 keyIndicatorData: {
-                    //本月累积量
+                    //本月累积量 
                     monthNumCumulant: 0,
                     //本年累积量
                     yearNumCumulant: 0,
@@ -119,9 +119,9 @@
                     monthNumChange: 0,
                     //本年评论数量变化量
                     yearNumChange: 0,
-                    //本月同比数量变化量
+                    //本月同比数量变化量 
                     monthNumPercent: "0",
-                    //本年同比数量变化量
+                    //本年同比数量变化量 
                     yearNumPercent: "0",
                     //本月评论数量是否上升 0 表示下降 1表示上升
                     isMonthNumRise: 0,
@@ -152,7 +152,6 @@
             getKeyIndicatorFun: function () {
                 getKeyIndicator().then(res => {
                     if (res.code === 0) {
-                        console.log(res.data);
                         this.keyIndicatorData = res.data;
                     } else {
                         this.$Message.error(res.message);
