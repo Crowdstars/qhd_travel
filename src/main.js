@@ -44,7 +44,7 @@ Vue.config.productionTip = false;
  * @description 全局注册应用配置
  */
 Vue.prototype.$config = config;
-
+require("./common/css/base.less");
 new Vue({
     el: '#app',
     router,

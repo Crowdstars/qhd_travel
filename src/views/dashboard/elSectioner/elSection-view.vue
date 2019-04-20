@@ -68,53 +68,53 @@
             </el-row>
         </el-col>
         <el-col :lg="7" :xl="7" class="elContent">
-            <!--标题-->
-            <el-row type="flex" justify="space-around" align="middle" class="elBgd"
-                    :style="{'padding': contentHeight * 0.05 + 'px'}">
-                <el-col :lg='3' :xl="3">
-                    <img class="elImage" :width="contentHeight * 0.15 + 'px'"
-                         src="../../../assets/screenImage/icon_restaurant_list.png">
-                </el-col>
-                <el-col :lg='14' :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
-                <el-col :lg='8' :xl="8" class="elFontSize"><a :href="foodDetailUrl" target="_blank">查看详情</a></el-col>
-            </el-row>
-            <!--内容-->
-            <el-row class="elCtBgd"
-                    :style="{'padding': contentHeight * 0.05 + 'px','max-height': centerChartHeight +'px'}">
-                <el-col :lg='24' :xl="24">
-                    <el-row>
-                        <el-col :lg='10' :xl="10">店名</el-col>
-                        <el-col :lg='4' :xl="4" style="text-align: center">评分</el-col>
-                        <el-col :lg='10' :xl="10" style="text-align: right">评论数</el-col>
-                    </el-row>
-                </el-col>
-                <el-col :lg='24' :xl="24">
-                    <el-row class="elCtBgdTd" :style="{'max-height': centerChartHeight * 0.8 +'px'}">
-                        <el-col :lg='24' :xl="24" class="elFor" v-for="(item,index) in diningList" :key="index">
-                            <el-row class="elProgress">
-                                <el-col class="item-name" :lg='9' :xl="9">{{item._id}}</el-col>
-                                <el-col :lg='7' :xl="7">
-                                    <el-col class="percent-label" :lg='8' :xl="8">{{item.commentScore}}</el-col>
-                                    <el-col class="percent-label" :lg='16' :xl="16">
-                                        <el-progress :text-inside="true" :stroke-width="6"
-                                                     :percentage="item.commentScorePercent"
-                                                     color="#D8FF77"></el-progress>
-                                    </el-col>
+        <!--标题-->
+        <el-row type="flex" justify="space-around" align="middle" class="elBgd"
+                :style="{'padding': contentHeight * 0.05 + 'px'}">
+            <el-col :lg='3' :xl="3">
+                <img class="elImage" :width="contentHeight * 0.15 + 'px'"
+                     src="../../../assets/screenImage/icon_restaurant_list.png">
+            </el-col>
+            <el-col :lg='14' :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
+            <el-col :lg='8' :xl="8" class="elFontSize"><a :href="foodDetailUrl" target="_blank">查看详情</a></el-col>
+        </el-row>
+        <!--内容-->
+        <el-row class="elCtBgd"
+                :style="{'padding': contentHeight * 0.05 + 'px','max-height': centerChartHeight +'px'}">
+            <el-col :lg='24' :xl="24">
+                <el-row>
+                    <el-col :lg='10' :xl="10">店名</el-col>
+                    <el-col :lg='4' :xl="4" style="text-align: center">评分</el-col>
+                    <el-col :lg='10' :xl="10" style="text-align: right">评论数</el-col>
+                </el-row>
+            </el-col>
+            <el-col :lg='24' :xl="24">
+                <el-row class="elCtBgdTd" :style="{'max-height': centerChartHeight * 0.8 +'px'}">
+                    <el-col :lg='24' :xl="24" class="elFor" v-for="(item,index) in diningList" :key="index">
+                        <el-row class="elProgress">
+                            <el-col class="item-name" :lg='9' :xl="9">{{item._id}}</el-col>
+                            <el-col :lg='7' :xl="7">
+                                <el-col class="percent-label" :lg='8' :xl="8">{{item.commentScore}}</el-col>
+                                <el-col class="percent-label" :lg='16' :xl="16">
+                                    <el-progress :text-inside="true" :stroke-width="6"
+                                                 :percentage="item.commentScorePercent"
+                                                 color="#D8FF77"></el-progress>
                                 </el-col>
-                                <el-col :lg='8' :xl="8" style="text-align: right">
-                                    <el-col :lg='16' :xl="16">
-                                        <el-progress :text-inside="true" :stroke-width="6"
-                                                     :percentage="item.commentNumberPercent"
-                                                     color="#02FFF9"></el-progress>
-                                    </el-col>
-                                    <el-col class="percent-label" :lg="8" :xl="8">{{item.commentNumber}}</el-col>
+                            </el-col>
+                            <el-col :lg='8' :xl="8" style="text-align: right">
+                                <el-col :lg='16' :xl="16">
+                                    <el-progress :text-inside="true" :stroke-width="6"
+                                                 :percentage="item.commentNumberPercent"
+                                                 color="#02FFF9"></el-progress>
                                 </el-col>
-                            </el-row>
-                        </el-col>
-                    </el-row>
-                </el-col>
-            </el-row>
-        </el-col>
+                                <el-col class="percent-label" :lg="8" :xl="8">{{item.commentNumber}}</el-col>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+    </el-col>
     </el-row>
 </template>
 <script>

@@ -1,0 +1,202 @@
+@color-accept: #409eff;
+@color-success: #67c23a;
+@color-warning: #e6a23c;
+@color-danger: #f56c6c;
+@color-info: #909399;
+@color-text-main: #303133;
+@color-text-normal: #606266;
+@color-text-second: #909399;
+@color-text-placeholder: #c0c4cc;
+@color-border: #dcdfe6;
+@color-border-second: #e4e7ed;
+@color-border-third: #ebeef5;
+
+.text-size-14 {
+  font-size: 14px;
+}
+
+.text-size-16 {
+  font-size: 16px;
+}
+
+.text-size-18 {
+  font-size: 18px;
+}
+
+.text-size-12 {
+  font-size: 12px;
+}
+
+.text-main {
+  color: @color-text-main;
+}
+.text-normal {
+  color: @color-text-normal;
+}
+.text-second {
+  color: @color-text-second;
+}
+
+.bg-common {
+  background-color: #f6f6f6;
+}
+
+.bg-accept {
+  background-color: @color-accept;
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+.padding5 {
+  padding: 5px;
+}
+
+.margin10 {
+  margin: 10px;
+}
+
+.margin5 {
+  margin: 5px;
+}
+.margin-left-10 {
+  margin-left: 10px;
+}
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
+}
+.padding-right-10 {
+  padding-right: 10px;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.shrink {
+  flex-shrink: 10000;
+}
+
+.noshrink {
+  flex-shrink: 0;
+}
+
+.in-horizontal.fill-horizontal,
+.in-vertical.fill-vertical {
+  flex: 1 1;
+}
+
+.in-horizontal.fill-vertical,
+.in-vertical.fill-horizontal {
+  align-self: stretch;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.horizontal.left,
+.vertical.top {
+  justify-content: flex-start;
+}
+
+.horizontal.hcenter,
+.vertical.vcenter {
+  justify-content: center;
+}
+
+.horizontal.right,
+.vertical.bottom {
+  justify-content: flex-end;
+}
+
+.horizontal.space-between,
+.vertical.space-between {
+  justify-content: space-between;
+}
+
+.horizontal.space-around,
+.vertical.space-around {
+  justify-content: space-around;
+}
+
+.horizontal.left.top,
+.horizontal.hcenter.top,
+.horizontal.right.top,
+.horizontal.space-between.top,
+.horizontal.space-around.top,
+.vertical.top.left,
+.vertical.vcenter.left,
+.vertical.bottom.left,
+.vertical.space-between.left,
+.vertical.space-around.left {
+  align-items: flex-start;
+}
+
+.horizontal.left.vcenter,
+.horizontal.hcenter.vcenter,
+.horizontal.right.vcenter,
+.horizontal.space-between.vcenter,
+.horizontal.space-around.vcenter,
+.vertical.top.hcenter,
+.vertical.vcenter.hcenter,
+.vertical.bottom.hcenter,
+.vertical.space-between.hcenter,
+.vertical.space-around.hcenter {
+  align-items: center;
+}
+
+.horizontal.left.bottom,
+.horizontal.hcenter.bottom,
+.horizontal.right.bottom,
+.horizontal.space-between.bottom,
+.horizontal.space-around.bottom,
+.vertical.top.right,
+.vertical.vcenter.right,
+.vertical.bottom.right,
+.vertical.space-between.right,
+.vertical.space-around.right {
+  align-items: flex-end;
+}
+
+.horizontal.left.stretch,
+.horizontal.hcenter.stretch,
+.horizontal.right.stretch,
+.horizontal.space-between.stretch,
+.horizontal.space-around.stretch,
+.vertical.top.stretch,
+.vertical.vcenter.stretch,
+.vertical.bottom.stretch,
+.vertical.space-between.stretch,
+.vertical.space-around.stretch {
+  align-items: stretch;
+}
+
+.horizontal.left.baseline,
+.horizontal.hcenter.baseline,
+.horizontal.right.baseline,
+.horizontal.space-between.baseline,
+.horizontal.space-around.baseline {
+  align-items: baseline;
+}

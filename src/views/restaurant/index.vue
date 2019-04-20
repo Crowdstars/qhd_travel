@@ -9,13 +9,10 @@
                                    :style="{height:mainContentHeight * 0.25 +'px',overflow: 'hidden'}"></elHeader-view>
                 </el-col>
                 <el-col :lg='24' :xl="24">
-                    <elSection-view :contentHeight="mainContentHeight * 0.375"
-                                    :style="{height:mainContentHeight * 0.375 +'px',overflow: 'hidden'}"></elSection-view>
+                    <elSection-view :contentHeight="mainContentHeight * 0.7"
+                                    :style="{height:mainContentHeight * 0.7 +'px'}"></elSection-view>
                 </el-col>
-                <el-col :lg='24' :xl="24">
-                    <elFooter-view :contentHeight="mainContentHeight * 0.375"
-                                   :style="{height:mainContentHeight * 0.375 +'px',overflow: 'hidden'}"></elFooter-view>
-                </el-col>
+
             </el-row>
         </el-main>
     </el-container>
