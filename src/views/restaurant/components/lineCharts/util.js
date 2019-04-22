@@ -9,7 +9,7 @@ export const optionData = {
     tooltip: {
         trigger: 'axis',
         axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            type: 'line' // 默认为直线，可选为：'line' | 'shadow'
         },
     },
     grid: {
@@ -44,9 +44,9 @@ export const optionData = {
     xAxis: [{
         type: 'category',
         data: [],
-        axisTick: {
-            show: false,
-        },
+        // axisTick: {
+        //     show: false,
+        // },
         axisLabel: {
             color:'#ccc'
         },
@@ -59,7 +59,8 @@ export const optionData = {
         },
         interval:0,
         z:2
-    },{
+     },
+    {
         type: 'category',
         axisTick: {
             show: false,
@@ -71,7 +72,8 @@ export const optionData = {
                 width: "2" //坐标线的宽度
             }
         },
-    }],
+    }
+    ],
     yAxis: [
         {
             type: 'value',
