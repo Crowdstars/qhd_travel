@@ -1,7 +1,7 @@
 <template>
     <el-container ref="elContainer" class="elContainer">
         <el-main class="elContainer-elMain" ref="elMain">
-            <el-header ref="elHeader" height="auto" class="elContainer-elHeader">餐饮数据详情</el-header>
+            <el-header ref="elHeader" height="auto" class="elContainer-elHeader"></el-header>
             <p class="elContainer-endDate">截止日期：{{endDate}}</p>
             <el-row class="elContainer-elRow">
                 <el-col :lg='24' :xl="24">
@@ -96,13 +96,13 @@ export default {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        background: url('@{url}backgroundImage.png') no-repeat;
+
         background-size: 100% 100%;
-        color: #00FFE9;
+
 
         &-elMain {
             clear: both;
-            background: url('@{url}decoration.png') no-repeat;
+
             background-size: 100% 100%;
             padding: 1vw;
         }
@@ -120,7 +120,7 @@ export default {
             position: absolute;
             float: right;
             right: 18%;
-            color: #fff;
+
         }
 
         //内容

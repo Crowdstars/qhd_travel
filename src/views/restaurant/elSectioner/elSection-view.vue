@@ -74,6 +74,16 @@
                         <el-col :lg='14' :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
 
                     </el-row>
+            <div  class="condition">
+                <span><a rel="nofollow" class="sort-con sel">排序方式</a>
+                </span>
+                <span><a rel="nofollow" class="sort-con sel">评论数量</a>
+                    <span class="line">|</span>
+                </span>
+                <span><a rel="nofollow" class="sort-con sel">
+                    按评价</a> <span class="line">|</span></span>
+                <span><a rel="nofollow" class="sort-con sel">评分</a></span>
+            </div>
                     <!--内容-->
                     <el-row class="elCtBgd"
                             :style="{'padding': contentHeight * 0.05 + 'px','max-height': centerChartHeight +'px'}">
@@ -221,7 +231,7 @@
                     console.log('- - - - - - rhjlog handleSizeChange', value)
                 },
                 handleCurrentChange(value) {
-                    console.log(223111);
+
                     console.log('- - - - - - rhjlog handleCurrentChange', value, this.page)
                     this.loadData(value, this.selectCookStyle, this.selectBusiness)
                 },
@@ -253,6 +263,21 @@
     .sl-list {
         margin-top: 20px;
         overflow: scroll;
+    }
+    .condition {
+        height: 44px;
+        line-height: 44px;
+        border-bottom: 1px solid #e9e9e9;
+        margin-top: -1px;
+        position: relative;
+        padding-left: 10px;
+        zoom: 1;
+    }
+
+    .condition .sort-con {
+        display: inline-block;
+        margin: 0 10px;
+        text-align: center;
     }
     @url: "../../../assets/screenImage/";
 
@@ -320,8 +345,8 @@
 
             //内容
             .elCtBgd {
-                background: url('@{url}bgrImage.png') no-repeat;
-                background-size: 100% 100%;
+                background: url('@{url}bgrImage.png');
+                background-size: 100% 200%;
                 /*padding: 0.5vw 1.8vw;*/
                 /*padding: 2% 5%;*/
                 /*font-size: 1.2vw;*/

@@ -4,10 +4,7 @@
       <el-row class="elText" :style="{height:contentHeight+'px'}">
         <el-col :lg='24' :xl="24" style="width: 98%;">
           <el-row type="flex" justify="space-around" align="middle" style="overflow: hidden;">
-            <el-col :lg='4' :xl="4">
-              <img class="elText-images" :width="contentHeight * 0.2 + 'px'"
-                   src="../../../assets/screenImage/icon_score.png">
-            </el-col>
+
             <el-col :lg='20' :xl="20" class="elText-title">餐饮评论数</el-col>
           </el-row>
           <el-row style="margin-top: 3%">
@@ -15,7 +12,7 @@
             <el-col :lg='8' :xl="8" :offset="1">同比变化量</el-col>
             <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
           </el-row>
-          <el-row class="elText-elMonth" style="color:#00FF64;">
+          <el-row class="elText-elMonth">
             <el-col :lg='7' :xl="7"><span>{{keyIndicatorData.monthNumCumulant}}</span><span
                     class="articlePoints">条</span></el-col>
             <el-col :lg='8' :xl="8" :offset="1"><span>{{keyIndicatorData.monthNumChange}}</span><span
@@ -29,7 +26,7 @@
             <el-col :lg='8' :xl="8" :offset="1">同比变化量</el-col>
             <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
           </el-row>
-          <el-row class="elText-elYear" style="color:#F5D001;">
+          <el-row class="elText-elYear" >
             <el-col :lg='7' :xl="7"><span>{{keyIndicatorData.yearNumCumulant}}</span><span
                     class="articlePoints">条</span></el-col>
             <el-col :lg='8' :xl="8" :offset="1"><span>{{keyIndicatorData.yearNumChange}}</span><span
@@ -297,7 +294,7 @@
     width: 100%;
 
     .elText {
-      background: url('@{url}other.png') no-repeat;
+
       background-size: 100% 100%;
       padding: 1% 2%;
       width: 98.16667%;
@@ -317,13 +314,13 @@
 
       //上升
       .rising {
-        color: #FF2953 !important;
+
         position: relative;
       }
 
       //下降
       .falling {
-        color: #00FF47 !important;
+
         position: relative;
       }
 

@@ -6,7 +6,7 @@
                     <el-row type="flex" justify="space-around" align="middle" style="overflow: hidden;">
                         <el-col :lg='4' :xl="4">
                             <img class="elText-images" :width="contentHeight * 0.2 + 'px'"
-                                 src="../../../assets/screenImage/icon_score.png">
+                                >
                         </el-col>
                         <el-col :lg='20' :xl="20" class="elText-title">景区评分</el-col>
                     </el-row>
@@ -15,7 +15,7 @@
                         <el-col :lg='8' :xl="8" :offset="1">同比变化量</el-col>
                         <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
                     </el-row>
-                    <el-row class="elText-elMonth" style="color:#00FF64;">
+                    <el-row class="elText-elMonth">
                         <el-col :lg='7' :xl="7"><span>{{keyIndicatorData.monthScoreCumulant}}</span><span
                                 class="articlePoints">分</span></el-col>
                         <el-col :lg='8' :xl="8" :offset="1"><span>{{keyIndicatorData.monthScoreChange}}</span><span
@@ -29,7 +29,7 @@
                         <el-col :lg='8' :xl="8" :offset="1">同比变化量</el-col>
                         <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
                     </el-row>
-                    <el-row class="elText-elYear" style="color:#F5D001;">
+                    <el-row class="elText-elYear" >
                         <el-col :lg='7' :xl="7"><span>{{keyIndicatorData.yearScoreCumulant}}</span><span
                                 class="articlePoints">分</span></el-col>
                         <el-col :lg='8' :xl="8" :offset="1"><span>{{keyIndicatorData.yearScoreChange}}</span><span
@@ -60,7 +60,7 @@
                         <el-col :lg='7' :xl="7" :offset="1">同比变化量</el-col>
                         <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
                     </el-row>
-                    <el-row class="elText-elMonth" style="color:#00FF64;">
+                    <el-row class="elText-elMonth" >
                         <el-col :lg='8' :xl="8"><span>{{keyIndicatorData.monthNumCumulant}}</span><span
                                 class="articlePoints">条</span>
                         </el-col>
@@ -75,7 +75,7 @@
                         <el-col :lg='7' :xl="7" :offset="1">同比变化量</el-col>
                         <el-col :lg='7' :xl="7" :offset="1">同比增长率</el-col>
                     </el-row>
-                    <el-row class="elText-elYear" style="color:#F5D001;">
+                    <el-row class="elText-elYear">
                         <el-col :lg='8' :xl="8"><span>{{keyIndicatorData.yearNumCumulant}}</span><span
                                 class="articlePoints">条</span></el-col>
                         <el-col :lg='7' :xl="7" :offset="1"><span>{{keyIndicatorData.yearNumChange}}</span><span
@@ -111,7 +111,7 @@
                 textScoreContentHeight: 0,
                 //关键指标数据
                 keyIndicatorData: {
-                    //本月累积量 
+                    //本月累积量
                     monthNumCumulant: 0,
                     //本年累积量
                     yearNumCumulant: 0,
@@ -119,9 +119,9 @@
                     monthNumChange: 0,
                     //本年评论数量变化量
                     yearNumChange: 0,
-                    //本月同比数量变化量 
+                    //本月同比数量变化量
                     monthNumPercent: "0",
-                    //本年同比数量变化量 
+                    //本年同比数量变化量
                     yearNumPercent: "0",
                     //本月评论数量是否上升 0 表示下降 1表示上升
                     isMonthNumRise: 0,
@@ -182,7 +182,7 @@
         width: 100%;
 
         .elText {
-            background: url('@{url}other.png') no-repeat;
+
             background-size: 100% 100%;
             padding: 1% 2%;
             width: 98.16667%;
@@ -202,13 +202,13 @@
 
             //上升
             .rising {
-                color: #FF2953 !important;
+
                 position: relative;
             }
 
             //下降
             .falling {
-                color: #00FF47 !important;
+
                 position: relative;
             }
 
