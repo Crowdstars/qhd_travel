@@ -82,7 +82,7 @@
 
 <style scoped lang="less">
     //路径
-    @url: "../../../assets/screenImage/";
+    @url: "../../assets/screenImage/";
     .elContainer {
         width: 100vw;
         height: 100vh;
@@ -169,7 +169,7 @@
 <style>
     .first-block {
         clear: right;
-        background:  url('@{url}qdhc_bg.jpg') center;
+        background:  url(../../assets/screenImage/qdhc_bg.jpg) center;
         opacity: 0.8;
         border-radius: 10px;
         border: 1px solid red;
