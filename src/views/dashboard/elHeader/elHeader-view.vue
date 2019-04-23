@@ -6,7 +6,7 @@
                     <el-row type="flex" justify="space-around" align="middle" style="overflow: hidden;">
                         <el-col :lg='4' :xl="4">
                             <img class="elText-images" :width="contentHeight * 0.2 + 'px'"
-                                >
+                                 src="../../../assets/screenImage/icon_score.png">
                         </el-col>
                         <el-col :lg='20' :xl="20" class="elText-title">景区评分</el-col>
                     </el-row>

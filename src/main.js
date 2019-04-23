@@ -5,7 +5,6 @@ import Cookies from 'js-cookie'
 import 'normalize.css/normalize.css'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
 // global css
 import '@/styles/index.less'
 
@@ -24,7 +23,8 @@ import './permission'
 //if (process.env.NODE_ENV !== 'production') require('./mock');
 
 import * as filters from './filters'
-
+const moment = require("moment");
+// 工具
 Vue.use(Element, {
     /**
      * @description 设置element-ui默认组件大小
@@ -40,6 +40,7 @@ Object.keys(filters).forEach(key => {
  * @description 生产环境关掉提示
  */
 Vue.config.productionTip = false;
+Vue.prototype.$moment = moment;
 /**
  * @description 全局注册应用配置
  */

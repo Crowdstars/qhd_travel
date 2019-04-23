@@ -18,6 +18,7 @@
     "fuse.js": "3.4.4",
     "js-cookie": "^2.2.0",
     "mockjs": "1.0.1-beta3",
+    "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "qs": "^6.7.0",
@@ -50,7 +51,9 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.1.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
   },
   "postcss": {
     "plugins": {

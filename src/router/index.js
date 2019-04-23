@@ -26,17 +26,14 @@ import Main from "@/components/Main";
     affix: true                  如果 true, 标签将粘贴在标签视图中
   }
  **/
-export const constantRoutes = [
-    {
+export const constantRoutes = [{
         path: '/redirect',
         component: Main,
         hidden: true,
-        children: [
-            {
-                path: '/redirect/:path*',
-                component: () => import('@/views/redirect/index')
-            }
-        ]
+        children: [{
+            path: '/redirect/:path*',
+            component: () => import('@/views/redirect/index')
+        }]
     },
     {
         path: '/login',
@@ -63,37 +60,44 @@ export const constantRoutes = [
         component: () => import("@/views/errorPage/500"),
         hidden: true
     },
+
     {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: () => import('@/views/dashboard/index'),
-        meta: {title: '旅游数据大屏', icon: 'dashboard', noCache: true},
-    },
-    {
-        path: '',
-        component: Main,
-        redirect: 'dashboard',
-        children: [
-            {
-                path: 'dataView',
-                component: () => import('@/views/dataView/index'),
+        path: "/",
+        name: "Index",
+        redirect: "/dashboard",
+        component: () => import('@/views/Index/Index'), //首页4个导航栏
+
+        children: [{
+                path: '/dashboard',
+                component: () => import('@/views/dashboard/index'),
                 name: 'DataView',
-                meta: {title: '首页', icon: 'dashboard', noCache: true, affix: true}
-            }
+                meta: {
+                    title: '首页',
+                    icon: 'dashboard',
+                    noCache: true,
+                    affix: true
+                }
+            },
+            {
+                path: '/restaurant',
+                component: () => import('@/views/restaurant/index'),
+                name: 'Restaurant',
+                meta: {
+                    title: '餐饮详情',
+                    icon: 'restaurant',
+                    noCache: true,
+                    affix: true
+                }
+                // hidden: true
+            },
+            {
+                path: '/hoteldashboard',
+                name: 'HotelDashBoard',
+                component: () => import('@/views/hotelDashBoard/index')
+            },
         ]
     },
-    {
-        path: '/restaurant',
-        component: () => import('@/views/restaurant/index'),
-        name: 'Restaurant',
-        meta: {
-            title: '餐饮详情',
-            icon: 'restaurant',
-            noCache: true,
-            affix: true
-        }
-        // hidden: true
-    },
+
     {
         path: '/error',
         component: Main,
@@ -104,32 +108,42 @@ export const constantRoutes = [
             icon: '404'
         },
         hidden: true,
-        children: [
-            {
+        children: [{
                 path: '401',
                 component: () => import('@/views/errorPage/401'),
                 name: 'Page401',
-                meta: {title: 'page401', noCache: true},
+                meta: {
+                    title: 'page401',
+                    noCache: true
+                },
                 hidden: true
             },
             {
                 path: '404',
                 component: () => import('@/views/errorPage/404'),
                 name: 'Page404',
-                meta: {title: 'page404', noCache: true},
+                meta: {
+                    title: 'page404',
+                    noCache: true
+                },
                 hidden: true
             }
         ]
     },
 
-    {path: '*', redirect: '/404', hidden: true}
+    {
+        path: '*',
+        redirect: '/404',
+        hidden: true
+    }
 ];
 
 export default new Router({
     // mode: 'history', // require service support
-    scrollBehavior: () => ({y: 0}),
+    scrollBehavior: () => ({
+        y: 0
+    }),
     routes: constantRoutes
 });
 
 export const asyncRoutes = [];
-
