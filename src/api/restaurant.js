@@ -14,6 +14,16 @@ export function getShopKeyData() {
     })
 }
 
+
+export function getRestaurantList(param) {
+    console.log(param);
+    return request({
+        url: '/api/restaurants',
+        method: 'post',
+     data:param
+})
+}
+
 /**
  *  3-3. 餐饮选择模块
  */

@@ -9,7 +9,7 @@ export const optionData = {
     tooltip: {
         trigger: 'axis',
         axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'line' // 默认为直线，可选为：'line' | 'shadow'
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
         },
     },
     grid: {
@@ -30,25 +30,28 @@ export const optionData = {
         orient: 'horizontal',
         bottom: "0",
         textStyle: {
-            color: '#ccc',
+            // color: '#ccc',
+            color: "black",
             fontSize: 12,
 
         },
         icon: 'rect',
-        itemWidth:10,
-        itemHeight:10,
-        formatter: function(name) {
+        itemWidth: 10,
+        itemHeight: 10,
+        formatter: function (name) {
             return name
         }
     },
     xAxis: [{
         type: 'category',
         data: [],
-        // axisTick: {
-        //     show: false,
-        // },
+        axisTick: {
+            show: false,
+        },
         axisLabel: {
-            color:'#ccc'
+            // color:'#ccc',
+            color: "black",
+
         },
         axisLine: {
             onZero: false,
@@ -57,10 +60,9 @@ export const optionData = {
                 width: "2"
             }
         },
-        interval:0,
-        z:2
-     },
-    {
+        interval: 0,
+        z: 2
+    }, {
         type: 'category',
         axisTick: {
             show: false,
@@ -68,45 +70,44 @@ export const optionData = {
         axisLine: {
             onZero: false,
             lineStyle: {
-                color: "#0F4EC5", //左边线的颜色
+                // color: "#0F4EC5", //左边线的颜色
+                color:"rgba(0,0,0,0)",
                 width: "2" //坐标线的宽度
             }
         },
-    }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            position: 'left',
-            axisTick: {
-                inside: true,
-                lineStyle: {
-                    color: "#50E89D", //左边线的颜色
-                    width: "2" //坐标线的宽度
-                }
-            },
-            axisLabel: {
-                formatter: '{value}',
-                color:'#ccc'
-            },
-            axisLine: {
-                lineStyle: {
-                    color: "#50E89D", //左边线的颜色
-                    width: "2" //坐标线的宽度
-                }
-            },
-            splitLine: {
-                show: false
-            },
-            z:3
+    }],
+    yAxis: [{
+        type: 'value',
+        position: 'left',
+        axisTick: {
+            inside: true,
+            lineStyle: {
+                // color: "#50E89D", 
+                color: "blue", //左边线的颜色
+                width: "2" //坐标线的宽度
+            }
         },
-    ],
-    series: [
-        {
-            yAxisIndex:0,
-            name: "变化量",//当月的累积评论数量，折线图显示显示
-            type: "line",
-            data: []
+        axisLabel: {
+            formatter: '{value}',
+            // color:'#ccc',
+            color: "black",
         },
-    ]
+        axisLine: {
+            lineStyle: {
+                // color: "#50E89D", 
+                color: "blue", //左边线的颜色
+                width: "2" //坐标线的宽度
+            }
+        },
+        splitLine: {
+            show: false
+        },
+        z: 3
+    }],
+    series: [{
+        yAxisIndex: 0,
+        name: "变化量", //当月的累积评论数量，折线图显示显示
+        type: "line",
+        data: []
+    }]
 }
