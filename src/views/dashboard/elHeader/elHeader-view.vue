@@ -221,7 +221,7 @@ export default {
     padding-top: 5%;
     // padding: 1% 2%;
     width: 98.16667%;
-    padding-left: 8%;
+    padding-left: 3%;
 
     &-images {
         height:20px;
@@ -231,7 +231,8 @@ export default {
     }
 
     &-title {
-      font-size: 1.5vw;
+    //   font-size: 1.5vw;
+    font-size: 20px;
       padding-bottom: 2%
     }
 
