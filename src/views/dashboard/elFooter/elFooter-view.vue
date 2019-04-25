@@ -68,7 +68,7 @@
                 src="../../../assets/screenImage/pieIcon.png"
               >
             </el-col>
-            <el-col :lg="18" :xl="18" class="elTitle threeTip">酒店和餐饮评论数分布</el-col>
+            <el-col :lg="22" :xl="22" class="elTitle threeTip">酒店和餐饮评论数分布</el-col>
           </el-row>
           <!--内容-->
           <el-row class="elCtBgd">
@@ -101,7 +101,7 @@
                 src="../../../assets/screenImage/pieIcon.png"
               >
             </el-col>
-            <el-col :lg="18" :xl="18" class="elTitle threeTip">酒店和餐饮评分分布</el-col>
+            <el-col :lg="20" :xl="20" class="elTitle threeTip">酒店和餐饮评分分布</el-col>
           </el-row>
           <!--内容-->
           <el-row class="elCtBgd">
@@ -379,7 +379,7 @@ export default {
   .elContainerFooter {
     .elContent {
       .elTitle {
-        font-size: 15px !important;
+        font-size: 16px !important;
       }
 
       .threeTip::after {

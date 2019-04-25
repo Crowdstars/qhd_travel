@@ -106,7 +106,7 @@
         .modules {
             float: left;
             min-height:40px;
-            margin-left: 30px;
+            margin-left: 40px;
             a {
                 display: inline-block;
                 height: 40px;
