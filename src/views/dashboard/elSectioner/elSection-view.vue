@@ -77,7 +77,7 @@
         <el-col :lg="1" :xl="1">
           <img
             class="elImage"
-            
+
             src="../../../assets/screenImage/barIcon.png"
           >
         </el-col>
@@ -108,7 +108,7 @@
         </el-col>
         <el-col :lg="14" :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
         <el-col :lg="8" :xl="8" class="elFontSize">
-          <a :href="foodDetailUrl" target="_blank">查看详情</a>
+          <a href="#/restaurant">查看详情</a>
         </el-col>
       </el-row>
       <!--内容-->
@@ -201,7 +201,7 @@ export default {
     //餐饮详情链接
     foodDetailUrl() {
       //return this.$config.detailUrl + "/shopList?token=" + getToken();
-      return "#/restaurant";
+      return "/restaurant";
     }
   },
   methods: {

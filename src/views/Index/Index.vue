@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="navbar">
-            <div class="logo"><img src="../../assets/icons/logo1.png" ></div>
+
             <div class="modules">
                 <!--<router-link to="/home"> <i class="icon-home"> </i> 首页</router-link>-->
 
@@ -28,23 +28,6 @@
 
                 <!--<router-link to="/homepage">-->
                 <!--<i class="el-icon-view"></i>主页</router-link>    -->
-            </div>
-            <div class="menu">
-                <span class="time">{{ time }}</span>
-                <span>
-          <el-dropdown
-                  trigger="click"
-                  @command="handleCommand"
-          >
-            <span class="el-dropdown-link">
-
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="logout">退出</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </span>
             </div>
         </div>
         <router-view class="view" />
@@ -96,7 +79,7 @@
 </script>
 <style lang="scss" >
     .navbar {
-        height: 50px;
+        height: 40px;
         overflow: hidden;
         background: #333;
         color: #fff;
@@ -106,7 +89,7 @@
         right: 0;
         top: 0;
         z-index: 2;
-        padding: 0 25px;
+
         box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
         .logo {
             float: left;
@@ -122,11 +105,12 @@
         }
         .modules {
             float: left;
-            min-height: 50px;
+            min-height:40px;
+            margin-left: 30px;
             a {
                 display: inline-block;
-                height: 50px;
-                line-height: 50px;
+                height: 40px;
+                line-height: 40px;
                 color: #fff;
                 text-decoration: none;
                 margin-right: 25px;
@@ -139,7 +123,7 @@
         }
         .menu {
             float: right;
-            line-height: 50px;
+            line-height: 40px;
             .time {
                 margin-right: 20px;
                 color: #d5d5d5;
@@ -165,7 +149,7 @@
 
     .view {
         position: fixed;
-        top: 50px;
+        top: 40px;
         left: 0;
         bottom: 0;
         right: 0;
