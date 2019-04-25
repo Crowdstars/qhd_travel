@@ -128,7 +128,7 @@
         class="elBgd"
         :style="{'padding': contentHeight * 0.05 + 'px'}"
       >
-        <el-col :lg="3" :xl="3">
+        <el-col :lg="2" :xl="2">
           <img
             class="elImage"
             :width="contentHeight * 0.15 + 'px'"
