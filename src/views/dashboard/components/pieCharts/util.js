@@ -3,7 +3,8 @@ export const IdData = {
     hotelRestNumId: 'hotelRestNumId'
 }
 export const optionData = {
-    color: ['#4CDCFF', '#AEFF33', '#ECFF0A', '#9494FF', '#F5D001'],
+    // color: ['#4CDCFF', '#AEFF33', '#ECFF0A', '#9494FF', '#F5D001'],
+    color: ['#ffa2a2', '#a8f89d', '#9dcff8', '#ECFF0A', '#F5D001'],
     grid: {
         top: 0,
         bottom: 10,
@@ -14,7 +15,7 @@ export const optionData = {
     legend: {
         orient: 'horizontal',
         x: 'center',
-        top: "top",
+        top: "35",
         textStyle: {
             color: '#ccc',
             fontSize: 12,
@@ -24,7 +25,18 @@ export const optionData = {
         itemHeight: 10,
         icon: 'roundRect',
         formatter: function (name) {
-            return name;
+            switch (name) {
+                case "(0,20]":
+                    return "较少";
+                case "(20,50]":
+                    return "少";
+                case "(50,90]":
+                    return "一般";
+                case "(90,1000]":
+                    return "多";
+                default:
+                    return name
+            }
         },
         show: true
     },
@@ -261,7 +273,8 @@ export const optionData = {
     ]
 }
 export const optionData1 = {
-    color: ['#4CDCFF', '#AEFF33', '#ECFF0A', '#9494FF', '#F5D001'],
+    // color: ['#4CDCFF', '#AEFF33', '#ECFF0A', '#9494FF', '#F5D001'],
+    color: ['#ffa2a2', '#a8f89d', '#9dcff8', '#d388ff', '#F5D001'],
     grid: {
         top: 0,
         bottom: 10,
@@ -272,7 +285,7 @@ export const optionData1 = {
     legend: {
         orient: 'horizontal',
         x: 'center',
-        top: "top",
+        top: "35",
         textStyle: {
             color: '#ccc',
             fontSize: 12,
@@ -295,7 +308,7 @@ export const optionData1 = {
                     return "好";
                 default:
                     return name
-            }
+       }
         },
         show: true
     },

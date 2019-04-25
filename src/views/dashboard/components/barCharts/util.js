@@ -5,7 +5,8 @@ export const idData = {
 let imgone = new Image();
 imgone.src = "https://cdn.hzsxkj.cn/huayun/images/grid-no-border.png";
 export const optionData = {
-    color: ['#2FC968', '#8484FF', '#FFDB5C'],
+    // color: ['#8484FF', '#FFDB5C', '#2FC968'],
+    color: ['#f7982d', '#ff02b3'],
     tooltip: {
         trigger: 'axis',
         axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -14,9 +15,9 @@ export const optionData = {
     },
     grid: {
         left: 0,
-        top: '5%',
+        top: '15%',
         right: 0,
-        bottom: '15%',
+        bottom: '5%',
         containLabel: true,
         show: true,
         backgroundColor: {
@@ -28,7 +29,8 @@ export const optionData = {
     legend: {
         show: true,
         orient: 'horizontal',
-        bottom: "0",
+        // bottom: "190",
+        top:"5",
         textStyle: {
             color: '#ccc',
             fontSize: 12,
@@ -100,8 +102,8 @@ export const optionData = {
         },
         {
             type: 'value',
-            min: 0,
-            max: 100,
+            min: -60,
+            max: 60,
             opposite: true,
             position: 'right',
             axisLabel: {
@@ -130,12 +132,12 @@ export const optionData = {
 
     ],
     series: [
-        {
-            yAxisIndex:0,
-            name: "累积量",//当月的累积评论数量，折线图显示显示
-            type: "line",
-            data: []
-        },
+        // {
+        //     yAxisIndex:0,
+        //     name: "累积量",//当月的累积评论数量，折线图显示显示
+        //     type: "line",
+        //     data: []
+        // },
         {
             yAxisIndex:0,
             name: "评论数量",//当月的评论数量，柱状图显示

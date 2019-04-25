@@ -75,7 +75,8 @@
                         max: this.visualMapMax,
                         type: 'piecewise',
                         inRange: {
-                            color: ['#50a3ba', '#eac736', 'red']
+                            // color: ['#50a3ba', '#eac736', 'red']
+                            color:['#88bfff','#eac736','#ff02b3']
                         },
                         textStyle: {
                             color: '#fff'
