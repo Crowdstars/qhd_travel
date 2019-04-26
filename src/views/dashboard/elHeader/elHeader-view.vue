@@ -14,42 +14,44 @@
             <el-col :lg="22" :xl="22" class="elText-title">景区评分</el-col>
           </el-row>
           <el-row style="margin-top: 3%">
-            <el-col :lg="7" :xl="7">本月综合评分</el-col>
-            <el-col :lg="8" :xl="8" :offset="1">同比变化量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比增长率</el-col>
+            <el-col :lg="8" :xl="8">本月综合评分</el-col>
+            <el-col :lg="9" :xl="9" :offset="1" style="margin-bottom: 4px;">同比变化量</el-col>
+            <el-col :lg="5" :xl="5" :offset="1">同比增长率</el-col>
           </el-row>
           <el-row class="elText-elMonth">
-            <el-col :lg="7" :xl="7">
+            <el-col :lg="8" :xl="8">
               <span>{{keyIndicatorData.monthScoreCumulant}}</span>
               <span class="articlePoints">分</span>
             </el-col>
             <el-col :lg="8" :xl="8" :offset="1">
-              <span>{{keyIndicatorData.monthScoreChange}}</span>
+              <span v-html="showText(keyIndicatorData.monthScoreChange)">{{keyIndicatorData.monthScoreChange}}</span>
               <span class="articlePoints">分</span>
             </el-col>
-            <el-col :lg="7" :xl="7" :offset="1">
+            <el-col :lg="6" :xl="6" :offset="1">
               <span
                 :class="[keyIndicatorData.isMonthScoreRise ? 'rising' : 'falling']"
+                v-html="showText(keyIndicatorData.monthScorePercent)"
               >{{keyIndicatorData.monthScorePercent}}</span>
             </el-col>
           </el-row>
           <el-row style="margin-top: 5%">
-            <el-col :lg="7" :xl="7">本年综合评分</el-col>
-            <el-col :lg="8" :xl="8" :offset="1">同比变化量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比增长率</el-col>
+            <el-col :lg="8" :xl="8">本年综合评分</el-col>
+            <el-col :lg="9" :xl="5" :offset="1" style="margin-bottom: 4px;">同比变化量</el-col>
+            <el-col :lg="5" :xl="5" :offset="1">同比增长率</el-col>
           </el-row>
           <el-row class="elText-elYear">
-            <el-col :lg="7" :xl="7">
+            <el-col :lg="8" :xl="8">
               <span>{{keyIndicatorData.yearScoreCumulant}}</span>
               <span class="articlePoints">分</span>
             </el-col>
-            <el-col :lg="8" :xl="8" :offset="1">
-              <span>{{keyIndicatorData.yearScoreChange}}</span>
+            <el-col :lg="9" :xl="9" :offset="1">
+              <span v-html="showText(keyIndicatorData.yearScoreChange)">{{keyIndicatorData.yearScoreChange}}</span>
               <span class="articlePoints">分</span>
             </el-col>
-            <el-col :lg="7" :xl="7" :offset="1">
+            <el-col :lg="5" :xl="5" :offset="1">
               <span
                 :class="[keyIndicatorData.isYearScoreRise ? 'rising' : 'falling']"
+                v-html="showText(keyIndicatorData.yearScorePercent)"
               >{{keyIndicatorData.yearScorePercent}}</span>
             </el-col>
           </el-row>
@@ -75,8 +77,8 @@
           </el-row>
           <el-row style="margin-top: 3%">
             <el-col :lg="8" :xl="8">本月累积量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比变化量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比增长率</el-col>
+            <el-col :lg="8" :xl="8" :offset="1" style="margin-bottom: 4px;">同比变化量</el-col>
+            <el-col :lg="5" :xl="5" :offset="1">同比增长率</el-col>
           </el-row>
           <el-row class="elText-elMonth">
             <el-col :lg="8" :xl="8">
@@ -84,19 +86,20 @@
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
-              <span>{{keyIndicatorData.monthNumChange}}</span>
+              <span v-html="showText(keyIndicatorData.monthNumChange)">{{keyIndicatorData.monthNumChange}}</span>
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
               <span
                 :class="[keyIndicatorData.isMonthNumRise ? 'rising' : 'falling']"
+                v-html="showText(keyIndicatorData.monthNumPercent)"
               >{{keyIndicatorData.monthNumPercent}}</span>
             </el-col>
           </el-row>
           <el-row style="margin-top: 4%">
             <el-col :lg="8" :xl="8">本年累积量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比变化量</el-col>
-            <el-col :lg="7" :xl="7" :offset="1">同比增长率</el-col>
+            <el-col :lg="8" :xl="8" :offset="1" style="margin-bottom: 4px;">同比变化量</el-col>
+            <el-col :lg="5" :xl="5" :offset="1">同比增长率</el-col>
           </el-row>
           <el-row class="elText-elYear">
             <el-col :lg="8" :xl="8">
@@ -104,12 +107,13 @@
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
-              <span>{{keyIndicatorData.yearNumChange}}</span>
+              <span v-html="showText(keyIndicatorData.yearNumChange)">{{keyIndicatorData.yearNumChange}}</span>
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
               <span
                 :class="[keyIndicatorData.isYearNumRise ? 'rising' : 'falling']"
+                v-html="showText(keyIndicatorData.yearNumPercent)"
               >{{keyIndicatorData.yearNumPercent}}</span>
             </el-col>
           </el-row>
@@ -178,6 +182,7 @@ export default {
   methods: {
     //获取关键指标数据
     getKeyIndicatorFun: function() {
+        console.log("执行getKeyIndicatorFun()函数")
       getKeyIndicator().then(res => {
         if (res.code === 0) {
           this.keyIndicatorData = res.data;
@@ -185,6 +190,24 @@ export default {
           this.$Message.error(res.message);
         }
       });
+    },
+    showText:function(val){
+        // console.log("正在执行showText()函数")
+        var value=  '',
+            newstr='',
+            textColor='';
+        if(val.substr(0, 1) == "+"){
+            value = "+";
+            textColor = "red";
+        }
+        if(val.substr(0, 1) == "-"){
+            value = "-";
+            textColor = "chartreuse";
+        }
+        var temp = val.split(/\s/);
+        newstr = val.replace(temp[0], "<span style='color: "+textColor+";'>"+value+"</span>");
+        console.log(newstr);
+        return newstr;
     }
   },
   mounted() {
@@ -224,23 +247,24 @@ export default {
     padding-left: 3%;
 
     &-images {
-        height:20px;
-        width: 20px;
+      height: 20px;
+      width: 20px;
       float: left;
       padding-bottom: 4%;
     }
 
     &-title {
-    //   font-size: 1.5vw;
-    font-size: 20px;
-      padding-bottom: 2%
+      //   font-size: 1.5vw;
+      font-size: 20px;
+      padding-bottom: 2%;
     }
 
     &-elMonth,
     &-elYear {
-      color: rgb(255, 251, 246);
+      color: rgb(255, 255, 255);
+    //   color:chartreuse
       font-size: 24px;
-    //   font-size: 1.6vw;
+      //   font-size: 1.6vw;
     }
 
     //上升
@@ -278,7 +302,7 @@ export default {
       color: rgb(146, 230, 245);
       font-size: 15px;
       //   font-size: 1vw;
-      margin-left: 8%;
+      margin-left: 3%;
     }
   }
 }

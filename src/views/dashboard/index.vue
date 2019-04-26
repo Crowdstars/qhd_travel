@@ -103,8 +103,10 @@
         overflow: hidden;
         background: url('@{url}backgroundImage.png') no-repeat;
         background-size: 100% 100%;
-        color: #00FFE9;
-
+        // color: #00FFE9;
+        // color: rgb(146, 230, 245);
+        // color:lightyellow;
+        color:aqua;
         &-elMain {
             clear: both;
             background: url('@{url}decoration.png') no-repeat;
@@ -114,6 +116,7 @@
 
         //头部
         &-elHeader {
+            color: #00FFE9;
             float: left;
             width: 100%;
             text-align: center;
