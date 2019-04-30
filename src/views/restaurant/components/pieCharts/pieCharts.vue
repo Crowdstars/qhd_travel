@@ -27,9 +27,8 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '23vh'
             },
-
             restNumData: {
                 type: Array,
                 default: () => []

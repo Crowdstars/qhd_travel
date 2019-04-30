@@ -10,7 +10,7 @@ const config = {
         // url:'http://localhost:3000',
         //详情跳转请求地址
         // detailUrl: 'http://120.55.59.187:3000',
-        detailUrl: 'http://localhost:3000'
+        detailUrl: 'http://120.55.59.187:8000'
     },
     /**
      * @description 正式打包环境请求前缀
@@ -18,10 +18,10 @@ const config = {
     pro: {
         //向后端基础请求地址
         // url: 'http://120.55.59.187:3000',
-        url: 'http://localhost:3000',
+        url: 'http://120.55.59.187:3000',
         //详情跳转请求地址
         // detailUrl: 'http://120.55.59.187:3000'
-        detailUrl: 'http://localhost:3000'
+        detailUrl: 'http://120.55.59.187:8000'
     }
 };
 
