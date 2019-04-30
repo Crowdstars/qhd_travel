@@ -1,25 +1,18 @@
 <template>
-    <el-container ref="elContainer" class="elContainer">
-        <el-main class="elContainer-elMain" ref="elMain">
-            <el-header ref="elHeader" height="auto" class="elContainer-elHeader"></el-header>
-            <p class="elContainer-endDate">截止日期：{{endDate}}</p>
-            <el-row class="elContainer-elRow">
-                <el-col :lg='24' :xl="24">
-                    <elHeader-view :contentHeight="mainContentHeight * 0.25"
-                                   :style="{height:mainContentHeight * 0.25 +'px',overflow: 'hidden'}"></elHeader-view>
-                </el-col>
-                <el-col :lg='24' :xl="24">
-                    <elSection-view :contentHeight="mainContentHeight * 0.7"
-                                    :style="{height:mainContentHeight * 0.7 +'px'}"></elSection-view>
-                </el-col>
+    <div style="overflow: scroll">
+        <img src="../../assets/DetailsImgs/bg.png" style="width: 100%;height: 50%">
 
-            </el-row>
-        </el-main>
-    </el-container>
+
+
+        <elHeader-view style="margin-left:250px;margin-right: 250px;margin-top: -10%; font-size: 10px"></elHeader-view>
+
+        <elSection-view style="margin: 0 250px;font-size: 10px"></elSection-view>
+        <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view>
+
+    </div>
 </template>
 
 <script>
-    import {getEndDate} from "@/api/dataView"
     import {debounce} from '@/utils'
     import {elHeaderView} from './elHeader'
     import {elSectionView} from './elSectioner'
@@ -37,7 +30,7 @@ export default {
             }
     },
     components:{
-        elHeaderView, elSectionView, elFooterView
+        elHeaderView, elSectionView,elFooterView
     },
     methods: {
             //自动加载区域高度
@@ -71,107 +64,30 @@ export default {
             }).catch(err => {
                 console.log(err);
             });
-            this.$nextTick(() => {
-                this.autoLoadHeight();
-            });
+
         },
         mounted() {
             let self = this;
-            /** 自适应页面高度 */
-            this.__resizeHandler = debounce(() => {
-                window.screenHeight = document.body.clientHeight;
-                self.screenHeight = window.screenHeight;
-            }, 100);
-            window.addEventListener('resize', this.__resizeHandler);
+
+
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.__resizeHandler);
         }
 }
 </script>
-<style scoped lang="less">
+<style  lang="less">
+    html, body {
+        font-size: 10px !important;
+        overflow: scroll;
+    }
+    .chartTitle{
+        font-size:20px;
+        font-family:SourceHanSansSC-Medium;
+        font-weight:500;
+        color:rgba(79,83,89,1);
+    }
     //路径
-    @url: "../../assets/screenImage/";
-    .elContainer {
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
+    @url: "../../assets/DetailsImgs/";
 
-        background-size: 100% 100%;
-
-
-        &-elMain {
-            clear: both;
-
-            background-size: 100% 100%;
-            padding: 1vw;
-        }
-
-        //头部
-        &-elHeader {
-            float: left;
-            width: 100%;
-            text-align: center;
-            font-size: 5vh;
-            padding-bottom: 0.9vw;
-        }
-
-        &-endDate {
-            position: absolute;
-            float: right;
-            right: 18%;
-
-        }
-
-        //内容
-        &-elRow {
-            padding-left: 0.5vw;
-            padding-right: 0.9vw;
-        }
-
-    }
-
-    @media (max-width: 1400px) {
-        html, body, .elContainer {
-            font-size: 10px !important;
-        }
-    }
-
-    @media (min-width: 1400px) {
-        @media (max-width: 1500px) {
-            html, body, .elContainer {
-                font-size: 12px !important
-            }
-        }
-    }
-
-    @media (min-width: 1500px) {
-        @media (max-width: 1600px) {
-            html, body, .elContainer {
-                font-size: 14px !important
-            }
-        }
-    }
-
-    @media (min-width: 1600px) {
-        @media (max-width: 1700px) {
-            html, body, .elContainer {
-                font-size: 16px !important;
-            }
-        }
-    }
-
-    @media (min-width: 1700px) {
-        @media (max-width: 1800px) {
-            html, body, .elContainer {
-                font-size: 18px !important
-            }
-        }
-    }
-
-    @media (min-width: 1900px) {
-        html, body, .elContainer {
-            font-size: 20px !important;
-        }
-    }
 </style>

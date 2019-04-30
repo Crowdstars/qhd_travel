@@ -9,13 +9,14 @@
                     v-if="value == innerSelect"
                     class="cl-select bg-accept"
             >
-                {{value}}
+                <span class="fontStyle">    {{value}}</span>
             </div>
             <div
                     class="cl-normal"
                     v-else
                     @click="onTap(value)"
-            >{{value}}</div>
+            >{{value}}
+            </div>
         </div>
 
     </div>
@@ -26,6 +27,7 @@
         margin-bottom: 10px;
         cursor: pointer;
     }
+
     .cl-select {
         padding-top: 4px;
         padding-bottom: 4px;
@@ -37,6 +39,7 @@
         border-radius: 20px;
         color: white;
     }
+
     .cl-normal {
         padding-top: 4px;
         padding-bottom: 4px;

@@ -5,7 +5,7 @@ export const idData = {
 let imgone = new Image();
 imgone.src = "https://cdn.hzsxkj.cn/huayun/images/grid-no-border.png";
 export const optionData = {
-    color: ['#2FC968', '#8484FF', '#FFDB5C'],
+
     tooltip: {
         trigger: 'axis',
         axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -19,11 +19,7 @@ export const optionData = {
         bottom: '15%',
         containLabel: true,
         show: true,
-        backgroundColor: {
-            type: "pattern",
-            repeat: "repeat",
-            image: imgone
-        }
+
     },
     legend: {
         show: true,
@@ -82,7 +78,7 @@ export const optionData = {
         axisTick: {
             inside: true,
             lineStyle: {
-                // color: "#50E89D", 
+                // color: "#50E89D",
                 color: "blue", //左边线的颜色
                 width: "2" //坐标线的宽度
             }
@@ -94,7 +90,7 @@ export const optionData = {
         },
         axisLine: {
             lineStyle: {
-                // color: "#50E89D", 
+                // color: "#50E89D",
                 color: "blue", //左边线的颜色
                 width: "2" //坐标线的宽度
             }

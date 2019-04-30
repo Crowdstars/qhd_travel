@@ -63,7 +63,7 @@
                 getShopKeyData().then(res => {
 
                       this.option.series = [];
-                    let data = res.commentTrendModel.valueList.map((item, index) => {
+                    let data = res.data.commentTrendModel.valueList.map((item, index) => {
 
                         this.option.series.push(item);
                         return item;
@@ -80,7 +80,7 @@
                         })
                     });
 
-                    this.option.xAxis[0].data = res.commentTrendModel.timeList;
+                    this.option.xAxis[0].data = res.data.commentTrendModel.timeList;
                     this.initChart();
                     this.resize();
                 })

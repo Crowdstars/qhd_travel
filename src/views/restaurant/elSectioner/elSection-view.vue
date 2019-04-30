@@ -1,410 +1,329 @@
 <template>
-  <div>
-    <el-row :gutter="10" class="elContainerSection">
-      <el-col :lg="24" :xl="24" class="elContent">
-        <el-card>
-          <div class="horizontal left top padding10 text-main">
-            <span class="noshrink" style="margin-top:4px">商圈:</span>
-            <choose-list
-              class="margin-left-10"
-              :values="businessCirle"
-              :select="selectBusiness"
-              v-on:on-select-change="onSelectChange"
-            />
-            <!-- select表示当前列表所选，values表示列表里所有的值 -->
-            <!-- v-on 事件监听，监听 on-select-change 事件，该事件由choose-list组件发出，当一个值被选中时发出，比如说 选择 商圈 千岛湖十字街  -->
-          </div>
-          <div class="horizontal left top padding10 text-main">
-            <span class="noshrink" style="margin-top:4px">菜系:</span>
-            <choose-list
-              class="margin-left-10"
-              :values="shopCookStyles"
-              :select="selectCookStyle"
-              v-on:on-select-change="onCookStyleChange"
-            />
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="10" class="elContainerSection">
-      <el-col :lg="16" :xl="16" class="elContent" style="height:200px; overflow: scroll">
-        <div class="sl-list">
-          <!-- v-loading="loading"
-                    element-loading-text="拼命加载中"
-                    element-loading-spinner="el-icon-loading"
-          element-loading-background="rgba(0, 0, 0, 0.8)"-->
-          <!-- 店铺组件 -->
-          <shop-row v-for="item in shopList" :key="item" :item="item"/>
+    <div>
+        <div style="margin: 10px;">
+            <img src="../../../assets/DetailsImgs/listIcon.png" style="width: 20px;height: 20px">
+            <span class="chartTitle">餐饮列表</span>
+        </div>
+        <div class="select-style">
 
-          <!-- http://element-cn.eleme.io/#/zh-CN/component/pagination -->
-          <el-pagination
-            background
-            :current-page.sync="page.page"
-            :page-size="page.pageSize"
-            :total="page.total"
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            layout="total,prev, pager, next"
-          ></el-pagination>
+            <div class="horizontal left top padding10 text-main">
+          <span
+                  class="noshrink fontStyle"
+                  style="margin-top:4px"
+          >商圈:</span>
+                <choose-list
+                        class="margin-left-10"
+                        :values="businessCirle"
+                        :select="selectBusines"
+                        v-on:on-select-change="businessAreaChange"
+                />
+                <!-- select表示当前列表所选，values表示列表里所有的值 -->
+                <!-- v-on 事件监听，监听 on-select-change 事件，该事件由choose-list组件发出，当一个值被选中时发出，比如说 选择 商圈 千岛湖十字街  -->
+            </div>
+
+            <div class="horizontal left top padding10 text-main">
+          <span
+                  class="noshrink fontStyle"
+                  style="margin-top:4px"
+          >菜系:</span>
+                <choose-list
+                        class="margin-left-10"
+                        :values="cuisineList"
+                        :select="selectCuisine"
+                        v-on:on-select-change="cuisineChange"
+                />
+            </div>
         </div>
-      </el-col>
-      <el-col :lg="8" :xl="8" class="elContent">
-        <!--标题-->
-        <el-row
-          type="flex"
-          justify="space-around"
-          align="middle"
-          class="elBgd"
-          :style="{'padding': contentHeight * 0.01 + 'px'}"
-        >
-          <el-col :lg="3" :xl="3">
-            <img
-              class="elImage"
-              :width="contentHeight * 0.10 + 'px'"
-              src="../../../assets/screenImage/icon_restaurant_list.png"
-            >
-          </el-col>
-          <el-col :lg="14" :xl="14" class="elTitle threeTip">餐饮 排行榜</el-col>
-        </el-row>
-        <div class="condition">
-          <span>
-            <a rel="nofollow" class="sort-con sel">排序方式</a>
-          </span>
-          <span>
-            <a rel="nofollow" class="sort-con sel">评论数量</a>
-            <span class="line">|</span>
-          </span>
-          <span>
-            <a rel="nofollow" class="sort-con sel">按评价</a>
-            <span class="line">|</span>
-          </span>
-          <span>
-            <a rel="nofollow" class="sort-con sel">评分</a>
-          </span>
-        </div>
-        <!--内容-->
-        <el-row
-          class="elCtBgd"
-          :style="{'padding': contentHeight * 0.05 + 'px','max-height': centerChartHeight +'px'}"
-        >
-          <el-col :lg="24" :xl="24">
-            <el-row>
-              <el-col :lg="10" :xl="10">店名</el-col>
-              <el-col :lg="4" :xl="4" style="text-align: center">评分</el-col>
-              <el-col :lg="10" :xl="10" style="text-align: right">评论数</el-col>
-            </el-row>
-          </el-col>
-          <el-col :lg="24" :xl="24">
-            <el-row class="elCtBgdTd" :style="{'max-height': centerChartHeight +'px'}">
-              <el-col
-                :lg="24"
-                :xl="24"
-                class="elFor"
-                v-for="(item,index) in diningList"
-                :key="index"
-              >
-                <el-row class="elProgress">
-                  <el-col class="item-name" :lg="9" :xl="9">{{item._id}}</el-col>
-                  <el-col :lg="7" :xl="7">
-                    <el-col class="percent-label" :lg="8" :xl="8">{{item.commentScore}}</el-col>
-                    <el-col class="percent-label" :lg="16" :xl="16">
-                      <el-progress
-                        :text-inside="true"
-                        :stroke-width="6"
-                        :percentage="item.commentScorePercent"
-                        color="#D8FF77"
-                      ></el-progress>
+
+
+        <el-row :gutter="24">
+            <el-col :lg="16">
+
+                <el-row :gutter="24" style="display: flex;align-items: center;
+height:50px;
+background:rgba(247,247,247,1);margin-left: 2px;margin-top: 10px;margin-right: 2px">
+                    <el-col :lg="8">
+                        <span class="fontStyle">排序方式</span>
                     </el-col>
-                  </el-col>
-                  <el-col :lg="8" :xl="8" style="text-align: right">
-                    <el-col :lg="16" :xl="16">
-                      <el-progress
-                        :text-inside="true"
-                        :stroke-width="6"
-                        :percentage="item.commentNumberPercent"
-                        color="#02FFF9"
-                      ></el-progress>
+
+                    <el-col :lg="8">
+                        <el-row :gutter="8" style="display: flex;align-items: center">
+
+                            <span class="fontStyle" style="text-align: right">评分</span>
+                            <div style="display: flex;flex-direction: column">
+                                <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(1,1)"></i>
+                                <i class="el-icon-arrow-down" style="cursor: pointer" @click="sortList(1,-1)"></i>
+                            </div>
+                        </el-row>
                     </el-col>
-                    <el-col class="percent-label" :lg="8" :xl="8">{{item.commentNumber}}</el-col>
-                  </el-col>
+                    <el-col :lg="8">
+                        <el-row :gutter="16" style="display: flex;align-items: center">
+
+                            <span class="fontStyle">评论数量</span>
+
+                            <div style="display: flex;flex-direction: column">
+                                <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(2,1)"></i>
+                                <i class="el-icon-arrow-down" style="cursor: pointer" @click="sortList(2,-1)"></i>
+                            </div>
+                        </el-row>
+                    </el-col>
                 </el-row>
-              </el-col>
-            </el-row>
-          </el-col>
+
+                <shop-row v-for="item in shopList" :item="item" style="margin-top: 20px;"/>
+                <div style="display: flex;justify-content: center">
+                    <el-pagination style="margin-top: 5px"
+                                   background
+                                   :current-page.sync="page.currPage"
+                                   :page-size="page.pageSize"
+                                   :total="page.total"
+                                   @current-change="handleCurrentChange"
+                                   layout="prev, pager, next"
+                    >
+                    </el-pagination>
+                </div>
+            </el-col>
+            <el-col :lg="8">
+                <div style="margin-top: 10px;background:rgba(255,255,255,1);
+border:1px solid rgba(236, 237, 240, 1);padding: 5px">
+                    <div>
+                        <div style="display: flex;justify-content: space-between;text-align: center">
+                            <div style="cursor: pointer" @click="selectGoodComment">
+                                <img v-bind:src="goodCommentImageSrc" class="img-size"/>
+                                <p :class="[selectCommentName == 'good' ?'select-comment' :'unselect-comment']">
+                                    好评榜
+                                <p/>
+                            </div>
+                            <div style="cursor: pointer" @click="selectBadComment">
+                                <img v-bind:src="badCommentImageSrc" class="img-size"/>
+                                <p :class="[selectCommentName == 'bad' ?'select-comment' :'unselect-comment']">
+                                    差评榜
+                                <p/>
+                            </div>
+                            <div style="cursor: pointer" @click="selectHotComment">
+                                <img v-bind:src="hotCommentImageSrc" class="img-size"/>
+                                <p :class="[selectCommentName == 'hot' ?'select-comment' :'unselect-comment']">
+                                    热度榜
+                                <p/>
+
+                            </div>
+                        </div>
+                    </div>
+                    <comment-row v-for="(item,index) in commentList" :item="item" :index="index" :key="item"
+                                 style="margin-top: 5px"/>
+                </div>
+            </el-col>
         </el-row>
-      </el-col>
-    </el-row>
-  </div>
+
+    </div>
 </template>
 <script>
-//展示的排行数据条数
-const maxDataNum = 10;
-import { site_list, shop_cook_styles } from "@/base/dict";
-import chooseList from "../components/chooseList/chooseList";
-import shopRow from "../components/shop/shop-row";
-import { getRestaurantList } from "@/api/restaurant";
-import { getRestaurantRank } from "@/api/dataView";
-export default {
-  name: "elSectionView",
-  props: {
-    contentHeight: {
-      type: Number,
-      default: 0
-    }
-  },
-  components: {
-    // 用到的组件需要在这里进行定义
-    "choose-list": chooseList,
-    "shop-row": shopRow
-  },
-  data() {
-    //data里定义的值在模版里可以直接通过名字来访问, 模版里用到的必须在这里定义
-    return {
-      loading: true,
-      businessCirle: site_list,
-      shopCookStyles: shop_cook_styles,
-      selectBusiness: "全部",
-      selectCookStyle: "全部",
-      shopList: [],
-      page: {
-        page: 0,
-        pageSize: 20,
-        total: 0,
-        next: 1
-      },
-      //餐饮排行列表
-      diningList: [],
-      centerChartHeight: 100
-    };
-  },
-  mounted() {
-    this.loadData(this.page.page, this.selectCookStyle, this.selectBusiness);
-    this.getRestaurantRankFun();
-  },
-  methods: {
-    loadData: async function(page, type, site) {
-      const asyncPromise = new Promise(resolve => {
-        setTimeout(() => {
-          resolve(1);
-          // reject('出错了');
-        }, 1000);
-      });
+    //展示的排行数据条数
+    const maxDataNum = 10;
+    import {site_list, shop_cook_styles} from "../base/dict";
+    import chooseList from "../components/chooseList/chooseList";
+    import shopRow from "../components/shop/shop-row";
+    import commentRow from "../components/comment/comment-row";
+    import {getCuisine, getRestaurantList, getShopRankList} from "@/api/restaurant";
+    import {getRestaurantRank} from "@/api/dataView";
 
-      asyncPromise
-        .then(value => {
-          console.log(value);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    export default {
+        name: "elSectionView",
+        props: {
+            contentHeight: {
+                type: Number,
+                default: 0
+            }
+        },
+        components: {
+            // 用到的组件需要在这里进行定义
+            "choose-list": chooseList,
+            "shop-row": shopRow,
+            "comment-row": commentRow
+        },
+        data() {
+            //data里定义的值在模版里可以直接通过名字来访问, 模版里用到的必须在这里定义
+            return {
+                loading: true,
+                businessCirle: site_list,
+                cuisineList: [],
+                selectCuisine: "",
+                selectBusines: "全部(1056)",
+                commentType: 1,
+                sortWay: -1,
+                shopList: [],
+                page: {
+                    currPage: 0,
+                    pageSize: 6,
+                    totalPage: 0,
+                    next: 1,
+                    total: 0
+                },
+                //餐饮排行列表
+                diningList: [],
+                centerChartHeight: 100,
+                goodCommentImageSrc: require("../../../assets/DetailsImgs/goodCommentSelect.png"),
+                badCommentImageSrc: require("../../../assets/DetailsImgs/badCommentUnselect.png"),
+                hotCommentImageSrc: require("../../../assets/DetailsImgs/hotCommentUnselect.png"),
+                //被选中是好评榜，差评榜，还是热度榜
+                selectCommentName: "good",
+                //所有的评论列表
+                allComments: {},
+                commentList: []
+            }
+        },
+        mounted() {
+            this.initCuisine();
+            this.initAllComment();
+        },
+        methods: {
+            businessAreaChange(value) {
+                this.selectBusines = value;
+                //商圈改变后，触发菜系的变化
+                this.initCuisine();
+            },
+            initCuisine() {
 
-      this.loading = true;
-      this.shopList = []; // 设置为空数组来清空数据，因为所选的条件变更了
+                var params = this.selectBusines.replace(/\([^\)]*\)/g, "");
+                this.cuisineList = [];
+                getCuisine({
+                    businessArea: params
+                }).then(res => {
 
-      const params = { page, type, site }; // page,type,site作为参数传递到params里
+                    res.data.shopCookList.forEach(item => {
 
-      getRestaurantList(params).then(result => {
-        console.log(result);
-        let self = this;
-        // const { page: pageData, data } = result
-        const pageData = result.page;
-        const data = result.data;
-        this.shopList = data;
-        this.page = pageData; // 表示当前数据是多少页的，总共有多少页
-        this.loading = false;
-      });
-    },
-    onSelectChange(value) {
-      this.selectBusiness = value;
-      this.page = {
-        page: 0,
-        pageSize: 20,
-        total: 0,
-        next: 1
-      };
-      this.loadData(0, this.selectCookStyle, this.selectBusiness); //更新数据
-    },
-    onCookStyleChange(value) {
-      this.selectCookStyle = value;
-      this.page = {
-        page: 0,
-        pageSize: 20,
-        total: 0,
-        next: 1
-      };
-      this.loadData(0, this.selectCookStyle, this.selectBusiness);
-    },
-    handleSizeChange(value) {
-      console.log("- - - - - - rhjlog handleSizeChange", value);
-    },
-    handleCurrentChange(value) {
-      console.log("- - - - - - rhjlog handleCurrentChange", value, this.page);
-      this.loadData(value, this.selectCookStyle, this.selectBusiness);
-    },
+                        this.cuisineList.push(item.id + "(" + item.number + ")");
+                    })
 
-    //获取餐饮排行列表
-    getRestaurantRankFun: function() {
-      getRestaurantRank().then(res => {
-        if (res.code === 0 && res.data) {
-          //获取Top5的数据
-          this.diningList = res.data.goodList
-            ? res.data.goodList.slice(0, maxDataNum)
-            : [];
-          var maxCommentNumber = Math.max.apply(
-            Math,
-            this.diningList.map(function(b) {
-              return b.commentNumber;
-            })
-          );
-          this.diningList.forEach(function(item) {
-            item["commentScorePercent"] =
-              (item.commentScore / maxDataNum) * 100;
-            item["commentNumberPercent"] =
-              maxCommentNumber > 0
-                ? (item.commentNumber / maxCommentNumber) * 100
-                : 0;
-          });
-        } else {
-          this.$message.error(res.message);
+                    this.selectCuisine = this.cuisineList[0];
+                    this.initShopList();
+                })
+            },
+            cuisineChange(value) {
+
+                this.selectCuisine = value;
+                //触发列表的改变
+                this.page.currPage = 1;
+                this.initShopList();
+
+            },
+            //初始化菜系
+            initShopList() {
+                //去除括号内的东西
+
+                //商圈 菜系等参数拿到
+                var params = {
+                    businessArea: this.selectBusines.replace(/\([^\)]*\)/g, ""),
+                    shopCook: this.selectCuisine.replace(/\([^\)]*\)/g, ""), //菜系（默认加载全部shopCook: ”全部“）
+                    pageSize: 6,//每页显示餐馆数量
+                    sortWay: this.sortWay, //排序方式，降序传-1，升序传1 默认传-1
+                    commentType: this.commentType, //排序关键字，按照评分传1，按照评论数量传2 默认传1
+                    currPage: this.page.currPage // 当前页面
+                };
+
+                getRestaurantList(params).then(res => {
+
+
+                    this.shopList = res.data.restaurantShopList;
+
+
+                    this.page = res.page;
+
+
+                })
+            },
+            //排序方式
+            sortList(commentType, sortWay) {
+                this.page.currPage = 1;
+                this.sortWay = sortWay;
+                this.commentType = commentType;
+                //商圈 菜系等参数拿到
+                this.initShopList();
+
+            },
+           //当前页面发生变化的时候
+            handleCurrentChange(value) {
+
+                this.page.currPage = value;
+                this.initShopList();
+            },
+
+            //选择好评榜
+            selectGoodComment() {
+                this.goodCommentImageSrc = require("../../../assets/DetailsImgs/goodCommentSelect.png");
+                this.badCommentImageSrc = require("../../../assets/DetailsImgs/badCommentUnselect.png");
+                this.hotCommentImageSrc = require("../../../assets/DetailsImgs/hotCommentUnselect.png");
+                this.selectCommentName = "good";
+                this.commentList = this.allComments.goodList;
+            },
+            //选择差评榜
+            selectBadComment() {
+                this.goodCommentImageSrc = require("../../../assets/DetailsImgs/goodCommentUnselect.png");
+                this.badCommentImageSrc = require("../../../assets/DetailsImgs/badCommentSelect.png");
+                this.hotCommentImageSrc = require("../../../assets/DetailsImgs/hotCommentUnselect.png");
+                this.selectCommentName = "bad";
+                this.commentList = this.allComments.badList;
+            },
+            //选择热度榜
+            selectHotComment() {
+                this.goodCommentImageSrc = require("../../../assets/DetailsImgs/goodCommentUnselect.png");
+                this.badCommentImageSrc = require("../../../assets/DetailsImgs/badCommentUnselect.png");
+                this.hotCommentImageSrc = require("../../../assets/DetailsImgs/hotCommentSelect.png");
+                this.selectCommentName = "hot";
+                this.commentList = this.allComments.commentNumList;
+            },
+            //初始化好评榜 差评榜 和热度榜
+            initAllComment() {
+                getShopRankList().then(res => {
+                    this.allComments = res.data;
+                    this.commentList = this.allComments.goodList;
+                })
+            }
+
         }
-      });
-    }
-  }
-};
+    };
 </script>
 
-<style scoped lang="less">
-.sl-list {
-  margin-top: 20px;
-  overflow: scroll;
-}
-.condition {
-  height: 44px;
-  line-height: 44px;
-  border-bottom: 1px solid #e9e9e9;
-  margin-top: -1px;
-  position: relative;
-  padding-left: 10px;
-  zoom: 1;
-}
-
-.condition .sort-con {
-  display: inline-block;
-  margin: 0 10px;
-  text-align: center;
-}
-@url: "../../../assets/screenImage/";
-
-@media (max-width: 1400px) {
-  .elContainerSection {
-    .elContent {
-      .elTitle {
-        font-size: 15px !important;
-      }
-
-      .threeTip::after {
-        font-size: 6px !important;
-        bottom: -100% !important;
-      }
-    }
-  }
-}
-
-.elContainerSection {
-  width: 100%;
-
-  .elContent {
-    .elBgd {
-      background: url("@{url}title.png") no-repeat;
-      background-size: 100% 100%;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
+<style lang="less">
+    .sl-list {
+        margin-top: 20px;
+        overflow: scroll;
     }
 
-    .elImage {
-      float: left;
+    .select-style {
+        background: rgba(255, 255, 255, 1);
+        border: 2px solid rgba(236, 237, 240, 1);
     }
 
-    .elFontSize {
-      float: right;
-      width: 60%;
-      text-align: right;
-      color: #006fff;
+    /*
+    好评榜 差评榜 被选中时候 与未选中时候样式
+    */
+    .select-comment {
+        font-size: 14px;
+        font-family: SourceHanSansSC-Regular;
+        font-weight: 400;
+        color: #E95124;
+        border-bottom: 1px solid #E95124;
     }
 
-    .elTitle {
-      padding: 0 10px;
+    .unselect-comment {
+        font-size: 14px;
+        font-family: SourceHanSansSC-Regular;
+        font-weight: 400;
+        color: rgba(131, 138, 147, 1);
+
     }
 
-    .threeTip {
-      position: relative;
-
-      &::after {
-        color: #006fff;
-        content: "（近三个月综合数据统计）";
-        display: inline-block;
-        position: absolute;
-        font-size: 8px;
-        left: 0;
-        bottom: -100%;
-      }
+    .img-size {
+        width: 40px;
+        height: 40px
     }
 
-    .elLink {
-      float: right;
+    ;
+    .fontStyle {
+        font-size: 14px;
+        font-family: SourceHanSansSC-Regular;
+        font-weight: 400;
+        color: rgba(79, 83, 89, 1);
     }
 
-    //内容
-    .elCtBgd {
-      background: url("@{url}bgrImage.png");
-      background-size: 100% 200%;
-      /*padding: 0.5vw 1.8vw;*/
-      /*padding: 2% 5%;*/
-      /*font-size: 1.2vw;*/
-
-      .item-name {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        color: #d9e0ed;
-      }
-
-      .percent-label {
-        color: #68e4e8;
-        text-align: center;
-      }
-
-      .elCtBgdTd {
-        overflow: auto;
-      }
-
-      .elFor {
-        padding-top: 0.5vh;
-        padding-top: 1%;
-      }
-    }
-  }
-}
-</style>
-<style scoped>
-/*背景颜色*/
-.elContainerSection >>> .el-progress-bar__outer {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-}
-
-/*手动添加渐变色*/
-.elContainerSection >>> .el-progress.is-success .el-progress-bar__inner {
-  background: linear-gradient(#d8ff77, #00fffa) !important;
-}
-
-/*百分比的高度*/
-.elContainerSection >>> .el-progress-bar__inner {
-  line-height: 0.5 !important;
-}
-
-/*隐藏百分比*/
-.elContainerSection >>> .el-progress-bar__innerText {
-  display: none !important;
-}
 </style>
