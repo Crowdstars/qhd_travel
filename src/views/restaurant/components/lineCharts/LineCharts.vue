@@ -74,7 +74,7 @@
                         this.option.series.map((d, i) => {
 
                             if (d.name === item.name) {
-                                d.data = item.data
+
                             }
 
                         })

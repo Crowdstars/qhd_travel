@@ -34,7 +34,7 @@
         <el-pagination style="margin-top: 5px"
                        background
                        :current-page.sync="page.currPage"
-                       :page-size="page.pageSize"
+                       :page-size="5"
                        :total="page.total"
                        @current-change="handleCurrentChange"
                        layout="prev, pager, next"
