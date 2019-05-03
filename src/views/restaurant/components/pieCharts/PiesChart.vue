@@ -27,7 +27,7 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '23vh'
             },
             restScoreData: {
                 type: Array,
