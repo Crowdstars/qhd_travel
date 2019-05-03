@@ -1,4 +1,3 @@
-@import './variables.less';
 @import './mixin.less';
 @import './transition.less';
 @import './element-ui.less';
@@ -24,6 +23,7 @@ html {
 
 #app {
   height: 100%;
+  overflow: scroll;
 }
 
 *,
@@ -232,7 +232,7 @@ code {
 
 body {
   /*当不滑动的时候，滚动条是隐藏的*/
-  //-ms-overflow-style: -ms-autohiding-scrollbar;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   scrollbar-arrow-color: #fff; /*三角箭头的颜色*/
   scrollbar-face-color: #dfdfdf; /*立体滚动条的颜色*/
   scrollbar-3dlight-color: #dfdfdf; /*立体滚动条亮边的颜色*/

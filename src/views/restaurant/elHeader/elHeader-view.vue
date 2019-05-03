@@ -233,6 +233,7 @@
         border-radius: 4px;
         background: #F8DE4A;
 
+
     }
 
     .chartBoard {
@@ -242,9 +243,10 @@
     }
 
     .title {
-        font-size: 32px;
-        font-family: SourceHanSansSC-Bold;
-        font-weight: bold;
+        font-size:32px;
+        font-family:SourceHanSansSC-Bold;
+        font-weight:bold;
         color: rgba(79, 83, 89, 1);
+
     }
 </style>
