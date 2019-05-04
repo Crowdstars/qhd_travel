@@ -6,7 +6,7 @@
         <p class="shop-name-style">{{item.shop_name}}</p>
         <p class="shop-address">地址：{{item.shop_address}}</p>
 
-        <div style="display: flex;justify-content: flex-start;align-items: center"><el-rate v-model="item.our_score" disabled="true">
+        <div style="display: flex;justify-content: flex-start;align-items: center"><el-rate v-model="item.our_score" :disabled = "true">
 
         </el-rate>
             <span class="shop-score"> {{item.our_score}}</span>
@@ -58,12 +58,14 @@
         font-family:SourceHanSansSC-Regular;
         font-weight:400;
         color:rgba(90,139,240,1);
+        margin-right: 5px;
     }
     .comment{
         font-size:12px;
         font-family:SourceHanSansSC-Regular;
         font-weight:400;
         color:rgba(119,119,119,1);
+
     }
 
 .shop-score{
@@ -101,7 +103,9 @@
             item: Object
         },
         data() {
-            return {}
+            return {
+                true:true
+            }
         },
         mounted() {
         },

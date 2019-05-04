@@ -74,7 +74,7 @@ background:rgba(247,247,247,1);margin-left: 2px;margin-top: 10px;margin-right: 2
                     <el-pagination style="margin-top: 5px"
                                    background
                                    :current-page.sync="page.currPage"
-                                   :page-size="page.pageSize"
+                                   :page-size="6"
                                    :total="page.total"
                                    @current-change="handleCurrentChange"
                                    layout="prev, pager, next"
@@ -85,15 +85,19 @@ background:rgba(247,247,247,1);margin-left: 2px;margin-top: 10px;margin-right: 2
             <el-col :lg="8">
                 <div style="margin-top: 10px;background:rgba(255,255,255,1);
 border:1px solid rgba(236, 237, 240, 1);padding: 5px">
-                    <div>
-                        <div style="display: flex;justify-content: space-between;text-align: center">
-                            <div style="cursor: pointer" @click="selectGoodComment">
+                    <div style="width: 100%">
+                  <div style="display: flex;justify-content: space-around">
+
+                            <div style="cursor: pointer;" @click="selectGoodComment">
+
                                 <img v-bind:src="goodCommentImageSrc" class="img-size"/>
                                 <p :class="[selectCommentName == 'good' ?'select-comment' :'unselect-comment']">
                                     好评榜
                                 <p/>
-                            </div>
-                            <div style="cursor: pointer" @click="selectBadComment">
+
+
+                  </div>
+                            <div style="cursor: pointer;" @click="selectBadComment">
                                 <img v-bind:src="badCommentImageSrc" class="img-size"/>
                                 <p :class="[selectCommentName == 'bad' ?'select-comment' :'unselect-comment']">
                                     差评榜
@@ -108,7 +112,7 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
                             </div>
                         </div>
                     </div>
-                    <comment-row v-for="(item,index) in commentList" :item="item" :index="index" :key="item"
+                    <comment-row v-for="(item,index) in commentList" :item="item" :index="index.toString()"
                                  style="margin-top: 5px"/>
                 </div>
             </el-col>
@@ -171,6 +175,9 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
                 commentList: []
             }
         },
+        numberToStr(index){
+            return index.toString()
+        },
         mounted() {
             this.initCuisine();
             this.initAllComment();
@@ -227,7 +234,7 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
 
 
                     this.page = res.page;
-
+                    console.log(this.page);
 
                 })
             },
@@ -315,9 +322,12 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
 
     .img-size {
         width: 40px;
-        height: 40px
-    }
+        height: 40px;
 
+    }
+i:hover{
+    color: rgba(82,153,240,1);
+}
     ;
     .fontStyle {
         font-size: 14px;

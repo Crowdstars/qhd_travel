@@ -3,10 +3,11 @@ export const IdData = {
     RestNumId: 'RestNumId',
 }
 export const optionData = {
+    color: ['#F8DE4A', '#B7D962', '#7072D1', '#7492E7', '#F5D001'],
     title : {
         text: '餐饮评论数分布',
 
-        x:'center',
+        x:'left',
         y:"bottom"
     },
     tooltip: {
@@ -17,7 +18,8 @@ export const optionData = {
         orient: 'vertical',
         x: 'right',
         data:['少','较少','一般','多'],
-        y:"center"
+        y:"center",
+        selectedMode:false
     },
     series: [
         {
@@ -41,7 +43,7 @@ export const optionData = {
             },
             labelLine: {
                 normal: {
-                    show: false
+                    show: true
                 }
             },
             data: [],
@@ -50,10 +52,11 @@ export const optionData = {
 
 }
 export const optionData1 = {
+    color: ['#F8DE4A', '#B7D962', '#7072D1', '#7492E7', '#F5D001'],
     title : {
         text: '餐饮评分分布',
 
-        x:'center',
+        x:'left',
         y:"bottom"
     },
     tooltip: {
@@ -64,7 +67,8 @@ export const optionData1 = {
         orient: 'vertical',
         x: 'right',
         data:['差','较差','良','较好',"好"],
-        y:"center"
+        y:"center",
+        selectedMode:true
     },
     series: [
         {

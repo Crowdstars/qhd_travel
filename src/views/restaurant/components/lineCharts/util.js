@@ -5,7 +5,7 @@ export const idData = {
 let imgone = new Image();
 imgone.src = "https://cdn.hzsxkj.cn/huayun/images/grid-no-border.png";
 export const optionData = {
-
+    color: [ '#6A6CCF'],
     tooltip: {
         trigger: 'axis',
         axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -31,12 +31,14 @@ export const optionData = {
             fontSize: 12,
 
         },
+        selectedMode:false,
         icon: 'rect',
         itemWidth: 10,
         itemHeight: 10,
         formatter: function (name) {
             return name
-        }
+        },
+
     },
     xAxis: [{
         type: 'category',
@@ -52,8 +54,8 @@ export const optionData = {
         axisLine: {
             onZero: false,
             lineStyle: {
-                color: "#0F4EC5",
-                width: "2"
+
+                width: "1"
             }
         },
         interval: 0,
@@ -79,8 +81,8 @@ export const optionData = {
             inside: true,
             lineStyle: {
                 // color: "#50E89D",
-                color: "blue", //左边线的颜色
-                width: "2" //坐标线的宽度
+                // color: "blue", //左边线的颜色
+                width: "1" //坐标线的宽度
             }
         },
         axisLabel: {
@@ -91,7 +93,7 @@ export const optionData = {
         axisLine: {
             lineStyle: {
                 // color: "#50E89D",
-                color: "blue", //左边线的颜色
+                color: "black", //左边线的颜色
                 width: "2" //坐标线的宽度
             }
         },
@@ -102,8 +104,14 @@ export const optionData = {
     }],
     series: [{
         yAxisIndex: 0,
-        name: "变化量", //当月的累积评论数量，折线图显示显示
+        name: "评论数量", //当月的累积评论数量，折线图显示显示
         type: "line",
-        data: []
+        itemStyle:{
+            normal:{
+                color:'orange',
+                borderColor:'orange',
+            }
+        },
+
     }]
 }
