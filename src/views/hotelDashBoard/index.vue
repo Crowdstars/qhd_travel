@@ -12,8 +12,8 @@
 <script>
     import {debounce} from '@/utils'
     import {elHeaderView} from './elHeader'
-    import {elSectionView} from './elSectioner'
-    import {elFooterView} from './elFooter'
+    // import {elSectionView} from './elSectioner'
+    // import {elFooterView} from './elFooter'
 export default {
     name: "elhotel",
     data(){

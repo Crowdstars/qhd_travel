@@ -45,7 +45,7 @@
           <span class="keyIndicatorKey">同比增长率</span>
         </p>
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.yearMonthPercent}}
+          {{commentKeyIndicatorModel.yearNumPercent}}
           <br>
           <span class="keyIndicatorKey">同比增长率</span>
         </p>
@@ -54,7 +54,7 @@
 
     <el-row :gutter="24">
       <el-col :lg="12">
-        <p class="chartTitle">酒店评论数评分分布</p>
+        <p class="chartTitle">酒店评分分布</p>
 
         <div class="chartBoard">
           <el-row :gutter="24">
@@ -118,7 +118,7 @@ export default {
         //本月同比数量变化量
         monthNumPercent: "0",
         //本年同比数量变化量
-        yearMonthPercent: "0",
+        yearNumPercent: "0",
         //本月评论数量是否上升 0 表示下降 1表示上升
         isMonthNumRise: 0,
         //本年评分数量是否上升 0 表示下降 1表示上升
