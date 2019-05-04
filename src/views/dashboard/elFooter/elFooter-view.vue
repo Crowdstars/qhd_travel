@@ -136,7 +136,9 @@
           >
         </el-col>
         <el-col :lg="14" :xl="14" class="elTitle threeTip">酒店 排行榜</el-col>
-        <!--                <el-col :lg='8' :xl="8" class="elFontSize"><a href="javascript:void(0)">查看详情</a></el-col>-->
+        <el-col :lg="8" :xl="8" class="elFontSize">
+          <a href="#/hotel">查看详情</a>
+        </el-col>
       </el-row>
       <!--内容-->
       <el-row class="elRBgd">
@@ -371,9 +373,9 @@ export default {
 </script>
 <style scoped lang="less">
 @url: "../../../assets/screenImage/";
-.fontsetNum{
-    color: aliceblue;
-    font-size: 15px;
+.fontsetNum {
+  color: aliceblue;
+  font-size: 15px;
 }
 @media (max-width: 1400px) {
   .elContainerFooter {
@@ -406,8 +408,8 @@ export default {
     }
 
     .elImage {
-                height:20px;
-        width: 20px;
+      height: 20px;
+      width: 20px;
       float: left;
     }
 

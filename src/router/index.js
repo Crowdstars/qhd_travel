@@ -90,11 +90,23 @@ export const constantRoutes = [{
                 }
                 // hidden: true
             },
-            {
-                path: '/hoteldashboard',
-                name: 'HotelDashBoard',
-                component: () => import('@/views/hotelDashBoard/index')
-            },
+             {
+                 path: '/hotel',
+                 component: () => import('@/views/hotelDashBoard/index'),
+                 name: 'Hotel',
+                 meta: {
+                     title: '餐酒店详情',
+                     icon: 'hotel',
+                     noCache: true,
+                     affix: true
+                 }
+                 // hidden: true
+             },
+            // {
+            //     path: '/hoteldashboard',
+            //     name: 'HotelDashBoard',
+            //     component: () => import('@/views/hotelDashBoard/index')
+            // },
         ]
     },
 

@@ -1,22 +1,16 @@
 <template>
-    <div>
-        <div :class="className" :id="id" :style="{height:height,width:width}"></div>
-        <slot></slot>
-    </div>
+    <div :class="className" :id="id" :style="{height:height,width:width}"/>
 </template>
 
 <script>
-
     import echarts from 'echarts'
     import {debounce} from '@/utils'
-    import { optionData} from './util'
+    import {getHotelKeyData} from '@/api/hotel'
+    import {optionData} from './util'
 
     export default {
+        name: "LineCharts",
         props: {
-            id: {
-                type: String,
-                default: 'container'
-            },
             className: {
                 type: String,
                 default: 'chart'
@@ -29,28 +23,18 @@
                 type: String,
                 default: '23vh'
             },
-            hotelNumData: {
-                type: Array,
-                default: () => []
+            id: {
+                type: String,
+                default: 'container'
             }
         },
         data() {
             return {
-                option: optionData,
                 chart: null,
-                xh_Height:0
+                option: optionData,
             }
         },
         watch: {
-
-            hotelNumData: {
-                handler: function (newVal) {
-
-                    this.option.series[0].data = newVal ;
-                    this.initChart();
-                },
-                deep: true,
-            },
             height: {
                 handler: function (newVal) {
                     let self = this;
@@ -63,9 +47,7 @@
             }
         },
         mounted() {
-            this.initChart();
-            this.resize();
-
+            this.loadChart();
         },
         beforeDestroy() {
             if (!this.chart) {
@@ -75,9 +57,36 @@
             this.chart.dispose();
             this.chart = null
         },
-
         methods: {
+            //设置图表数据
+            loadChart() {
+                getHotelKeyData().then(res => {
+
+                      this.option.series = [];
+                    let data = res.data.commentTrendModel.valueList.map((item, index) => {
+
+                        this.option.series.push(item);
+                        return item;
+
+                    });
+                    data.map((item, index) => {
+
+                        this.option.series.map((d, i) => {
+
+                            if (d.name === item.name) {
+                                d.data = item.data
+                            }
+
+                        })
+                    });
+
+                    this.option.xAxis[0].data = res.data.commentTrendModel.timeList;
+                    this.initChart();
+                    this.resize();
+                })
+            },
             initChart() {
+
                 this.chart = echarts.init(document.getElementById(this.id));
                 this.chart.setOption(this.option, true)
             },
@@ -92,3 +101,7 @@
         }
     }
 </script>
+
+<style scoped>
+
+</style>

@@ -27,13 +27,9 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '23vh'
             },
             hotelScoreData: {
-                type: Array,
-                default: () => []
-            },
-            restScoreData: {
                 type: Array,
                 default: () => []
             },
@@ -45,16 +41,9 @@
             }
         },
         watch: {
-            hotelScoreData: {
+                hotelScoreData: {
                 handler: function (newVal) {
-                    this.option.series[0].data = newVal ;
-                    this.initChart();
-                },
-                deep: true,
-            },
-            restScoreData: {
-                handler: function (newVal) {
-                    this.option.series[5].data = newVal ;
+                    this.option.series[0].data = newVal;
                     this.initChart();
                 },
                 deep: true,

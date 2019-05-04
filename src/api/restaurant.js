@@ -56,14 +56,18 @@ export function getShopComment(param) {
         data:param
     })
 }
-//3-6 餐饮详情 获取酒店评论数饼图
+/**
+ * 3-6. 餐饮详情 获取餐饮评论数饼图
+ */
 export function getRestaurantPieChartsNum() {
   return request({
       url:"/api/homepage/restaurantpiecharts/num",
       method:"post"
   })
 }
-//3-7 餐饮详情 获取酒店评论分数饼图
+/**
+ * 3-7. 餐饮详情 获取餐饮评论分数饼图
+ */
 export function getRestaurantPieChartsScore() {
     return request({
         url:"/api/homepage/restaurantpiecharts/score",
