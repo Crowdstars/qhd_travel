@@ -4,15 +4,15 @@
 
         <elHeader-view style="margin-left:250px;margin-right: 250px;margin-top: -10%; font-size: 10px"></elHeader-view>
 
-        <!-- <elSection-view style="margin: 0 250px;font-size: 10px"></elSection-view>
-        <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view> -->
+        <elSection-view style="margin: 0 250px;font-size: 10px"></elSection-view>
+        <!-- <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view> -->
 
     </div>
 </template>
 <script>
     import {debounce} from '@/utils'
     import {elHeaderView} from './elHeader'
-    // import {elSectionView} from './elSectioner'
+    import {elSectionView} from './elSectioner'
     // import {elFooterView} from './elFooter'
 export default {
     name: "elhotel",
@@ -28,7 +28,8 @@ export default {
     },
     components:{
         elHeaderView, 
-        // elSectionView,elFooterView
+        elSectionView,
+        // elFooterView
     },
     methods: {
             //自动加载区域高度
@@ -57,11 +58,11 @@ export default {
             }
         },
         created() {
-            getEndDate().then(res => {
-                this.endDate = res.data.endDate;
-            }).catch(err => {
-                console.log(err);
-            });
+            // getEndDate().then(res => {
+            //     this.endDate = res.data.endDate;
+            // }).catch(err => {
+            //     console.log(err);
+            // });
 
         },
         mounted() {

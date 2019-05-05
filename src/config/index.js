@@ -6,8 +6,8 @@ const config = {
      */
     dev: {
         //向后端基础请求地址
-         url: 'http://120.55.59.187:3000',
-        //url:'http://localhost:3000',
+        //  url: 'http://120.55.59.187:3000',
+        url:'http://localhost:3000',
         //详情跳转请求地址
         // detailUrl: 'http://120.55.59.187:3000',
         detailUrl: 'http://120.55.59.187:8000'

@@ -125,6 +125,7 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
     import commentRow from "../components/comment/comment-row";
     // import {getCuisine, getRestaurantList, getShopRankList} from "@/api/restaurant";
     import {getHotelSend, getHotelList, getHotelRankList} from "@/api/hotel";
+import { constants } from 'crypto';
     // import {getTradeHotelRankList} from "@/api/dataView";
 
     export default {
@@ -223,6 +224,10 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
                 getHotelList(params).then(res => {
                     this.hotelList = res.data.hotellist;
                     this.page = res.page;
+                    console.log('-------test1----------');
+                    console.log(this.hotelList);
+                    console.log('返回页数啦.....')
+                    console.log(this.page);
                 })
             },
             //排序方式

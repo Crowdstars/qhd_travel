@@ -38,10 +38,11 @@ export function getHotelPieChartsNum() {
 /**
  * 4.3 商圈选择对应酒店等级模块
  */
-export function getHotelSend() {
+export function getHotelSend(param) {
     return request({
         url: '/api/hotelpage/selectlist',
         method: 'post',
+        data: param
     })
 }
 
@@ -56,7 +57,7 @@ export function getHotelSend() {
  *   commentType: //排序关键字，按照评分传1，按照评论数量传2 默认传1
  *   currPage： // 当前页面
  */
-export function getHotelList() {
+export function getHotelList(param) {
     return request({
         url: '/api/hotelpage/shoplist',
         method: 'post',
@@ -92,7 +93,7 @@ export function getHotelLabelList() {
  *    currpage：‘ 当前页面’
  *    commentclass：” 评论质量“ // 差评  0    好评   1 默认传好评
  */
-export function getHotelComment() {
+export function getHotelComment(param) {
     return request({
         url: '/api/qdhhotelcomfeatureword',
         method: 'post',

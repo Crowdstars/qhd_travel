@@ -44,11 +44,11 @@
               <span>{{keyIndicatorData.yearScoreCumulant}}</span>
               <span class="articlePoints">分</span>
             </el-col>
-            <el-col :lg="9" :xl="9" :offset="1">
+            <el-col :lg="8" :xl="8" :offset="1">
               <span v-html="showText(keyIndicatorData.yearScoreChange)">{{keyIndicatorData.yearScoreChange}}</span>
               <span class="articlePoints">分</span>
             </el-col>
-            <el-col :lg="5" :xl="5" :offset="1">
+            <el-col :lg="6" :xl="6" :offset="1">
               <span
                 :class="[keyIndicatorData.isYearScoreRise ? 'rising' : 'falling']"
                 v-html="showText(keyIndicatorData.yearScorePercent)"
