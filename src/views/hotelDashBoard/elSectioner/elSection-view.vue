@@ -62,16 +62,16 @@
           </el-col>
         </el-row>
 
-        <shop-row v-for="item in hotelList" :item="item" style="margin-top: 20px;"/>
+        <shop-row v-for="item in hotelList" :key="item" :item="item" style="margin-top: 20px;"/>
         <div style="display: flex;justify-content: center">
           <el-pagination
             style="margin-top: 5px"
             background
+            @current-change="handleCurrentChange"
             :current-page.sync="page.currPage"
             :page-size="page.pageSize"
-            :total="page.total"
-            @current-change="handleCurrentChange"
             layout="prev, pager, next"
+            :total="page.total"
           ></el-pagination>
         </div>
       </el-col>
@@ -153,7 +153,7 @@ export default {
         pageSize: 6,
         totalPage: 0,
         next: 1,
-        total: 0
+        // total: 0
       },
       //餐饮排行列表
       hotelsList: [],
@@ -187,7 +187,6 @@ export default {
         res.data.hotelShopList.forEach(item => {
           this.trendList.push(item._id + "(" + item.countNum + ")");
         });
-        console.log(this.trendList);
         this.selectTrend = this.trendList[0];
         this.initHotelList();
       });
@@ -214,7 +213,11 @@ export default {
 
       getHotelList(params).then(res => {
         this.hotelList = res.data.hotellist;
+        console.log('显示酒店列表 怎么出现了未知数');
+        console.log(this.hotelList);
         this.page = res.page;
+        console.log(this.page.totalPage)
+        console.log(this.page.total)
       });
     },
     //排序方式

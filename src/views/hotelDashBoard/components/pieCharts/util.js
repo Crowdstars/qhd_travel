@@ -3,6 +3,7 @@ export const IdData = {
     HotelNumId: 'HotelNumId',
 }
 export const optionData = {
+    color: ['#F8DE4A', '#B7D962', '#7072D1', '#7492E7', '#F5D001'],
     title : {
         text: '酒店评论数分布',
 
@@ -50,6 +51,7 @@ export const optionData = {
 
 }
 export const optionData1 = {
+    color: ['#F8DE4A', '#B7D962', '#7072D1', '#7492E7', '#F5D001'],
     title : {
         text: '酒店评分分布',
 
