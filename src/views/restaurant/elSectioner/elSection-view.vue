@@ -69,7 +69,7 @@ background:rgba(247,247,247,1);margin-left: 2px;margin-top: 10px;margin-right: 2
                     </el-col>
                 </el-row>
 
-                <shop-row v-for="item in shopList" :key="item" :item="item" style="margin-top: 20px;"/>
+                <shop-row v-for="item in shopList" :item="item" style="margin-top: 20px;"/>
                 <div style="display: flex;justify-content: center">
                     <el-pagination style="margin-top: 5px"
                                    background
@@ -112,7 +112,7 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px">
                             </div>
                         </div>
                     </div>
-                    <comment-row v-for="(item,index) in commentList" :key="item" :item="item" :index="index.toString()"
+                    <comment-row v-for="(item,index) in commentList" :item="item" :index="index.toString()"
                                  style="margin-top: 5px"/>
                 </div>
             </el-col>

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div style="margin: 10px;">
-      <img src="../../../assets/DetailsImgs/listIcon.png" style="width: 20px;height: 20px">
-      <span class="chartTitle">酒店列表</span>
+    <div style="margin: 10px; margin-top:80px;">
+      <img src="../../../assets/DetailsImgs/listIcon.png" style="width: 10px;height: 15px; margin-right:15px;">
+      <span class="chartTitle" style="font-size: 18px;">酒店列表</span>
     </div>
     <div class="select-style">
       <div class="horizontal left top padding10 text-main">
-        <span class="noshrink fontStyle" style="margin-top:4px">商圈:</span>
+        <span class="noshrink fontStyle" style="margin-top:4px; margin-right:20px; ">商圈:</span>
         <choose-list
           class="margin-left-10"
           :values="businessCirle"
@@ -18,7 +18,7 @@
       </div>
 
       <div class="horizontal left top padding10 text-main">
-        <span class="noshrink fontStyle" style="margin-top:4px">等级:</span>
+        <span class="noshrink fontStyle" style="margin-top:4px; margin-right:20px;">等级:</span>
         <choose-list
           class="margin-left-10"
           :values="trendList"
@@ -29,21 +29,23 @@
     </div>
 
     <el-row :gutter="24">
-      <el-col :lg="16">
+      <el-col :lg="17">
         <el-row
           :gutter="24"
           style="display: flex;align-items: center;
-                 height:50px;
+                 height:40px;
                  background:rgba(247,247,247,1);margin-left: 2px;
                  margin-top: 10px;margin-right: 2px"
         >
           <el-col :lg="8">
-            <span class="fontStyle">排序方式</span>
+            <span class="fontStyle small-font">排序方式</span>
+            &nbsp;&nbsp;
+            <i class="el-icon-d-arrow-right"></i>
           </el-col>
-
+          
           <el-col :lg="8">
             <el-row :gutter="8" style="display: flex;align-items: center">
-              <span class="fontStyle" style="text-align: right">评分</span>
+              <span class="fontStyle small-font" style="text-align: right">评分</span>
               <div style="display: flex;flex-direction: column">
                 <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(1,1)"></i>
                 <i class="el-icon-arrow-down" style="cursor: pointer" @click="sortList(1,-1)"></i>
@@ -52,7 +54,7 @@
           </el-col>
           <el-col :lg="8">
             <el-row :gutter="16" style="display: flex;align-items: center">
-              <span class="fontStyle">评论数量</span>
+              <span class="fontStyle small-font">评论数量</span>
 
               <div style="display: flex;flex-direction: column">
                 <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(2,1)"></i>
@@ -75,7 +77,7 @@
           ></el-pagination>
         </div>
       </el-col>
-      <el-col :lg="8">
+      <el-col :lg="7">
         <div
           style="margin-top: 10px;background:rgba(255,255,255,1);
 border:1px solid rgba(236, 237, 240, 1);padding: 5px"
@@ -270,10 +272,13 @@ export default {
 </script>
 
 <style lang="less">
-.sl-list {
-  margin-top: 20px;
-  overflow: scroll;
+.chartTitle{
+  font-size: 26px;
 }
+// .sl-list {
+//   margin-top: 20px;
+//   overflow: scroll;
+// }
 
 .select-style {
   background: rgba(255, 255, 255, 1);
@@ -284,10 +289,12 @@ export default {
     好评榜 差评榜 被选中时候 与未选中时候样式
     */
 .select-comment {
+  
   font-size: 14px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
   color: #e95124;
+  // color: #c4dcfc;
   border-bottom: 1px solid #e95124;
 }
 
@@ -302,9 +309,13 @@ export default {
   width: 40px;
   height: 40px;
 }
-
-.fontStyle {
+.noshrink{
+  font-size: 15px;
+}
+.small-font{
   font-size: 14px;
+}
+.fontStyle {
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
   color: rgba(79, 83, 89, 1);

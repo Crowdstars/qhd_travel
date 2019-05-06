@@ -5,7 +5,7 @@
         <elHeader-view style="margin-left:250px;margin-right: 250px;margin-top: -10%; font-size: 10px"></elHeader-view>
 
         <elSection-view style="margin: 0 250px;font-size: 10px"></elSection-view>
-        <!-- <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view> -->
+        <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view>
 
     </div>
 </template>
@@ -13,7 +13,7 @@
     import {debounce} from '@/utils'
     import {elHeaderView} from './elHeader'
     import {elSectionView} from './elSectioner'
-    // import {elFooterView} from './elFooter'
+    import {elFooterView} from './elFooter'
 export default {
     name: "elhotel",
     data(){
@@ -29,7 +29,7 @@ export default {
     components:{
         elHeaderView, 
         elSectionView,
-        // elFooterView
+        elFooterView
     },
     methods: {
             //自动加载区域高度
