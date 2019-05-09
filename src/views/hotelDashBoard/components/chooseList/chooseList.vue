@@ -9,7 +9,7 @@
                     v-if="value == innerSelect"
                     class="cl-select bg-accept"
             >
-                <span class="fontStyle">    {{value}}</span>
+                <span class="fontStyle">{{value}}</span>
             </div>
             <div
                     class="cl-normal"
@@ -37,7 +37,7 @@
         margin-right: 8px;
 
         border-radius: 20px;
-        color: white;
+        // color: white;
     }
 
     .cl-normal {

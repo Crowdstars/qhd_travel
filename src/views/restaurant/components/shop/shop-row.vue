@@ -4,7 +4,10 @@
     <el-col :lg="12">
 <div style="text-align: left;margin-left: 5px">
         <p class="shop-name-style">{{item.shop_name}}</p>
-        <p class="shop-address">地址：{{item.shop_address}}</p>
+        <p class="shop-address">
+            <i class="el-icon-location"></i>
+            <span>{{item.shop_address}}</span>
+        </p>
 
         <div style="display: flex;justify-content: flex-start;align-items: center"><el-rate v-model="item.our_score" :disabled = "true">
 

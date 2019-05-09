@@ -5,13 +5,13 @@
                <el-col :lg = "2">
                    <el-col :lg="2">
                        <div class="elBefore">
-                           <span :class="[index == '0' || index == '1' || index == '2' ?'rank-three' :'rank']">{{index + 1 }}</span></div>
+                           <span :class="[index == 0 || index == 1 || index == 2 ?'rank-three' :'rank']">{{index + 1 }}</span></div>
                    </el-col>
                </el-col>
                 <el-col :lg="22">
 <div style="margin-left: 20px">
                         <p class="shop-name">{{item._id}}</p>
-    <div style="display: flex;justify-content: flex-start;align-items: center"><el-rate v-model="item.commentScore" text-color="#ED8B34" disabled="true">
+    <div style="display: flex;justify-content: flex-start;align-items: center"><el-rate v-model="item.commentScore" text-color="#ED8B34" :disabled="true">
 
     </el-rate>
         <span class="score"> {{item.commentScore}}</span>
@@ -86,7 +86,7 @@
     export default {
         props: {
             item: Object,
-            index:String
+            index: Number
         },
         data() {
             return {}

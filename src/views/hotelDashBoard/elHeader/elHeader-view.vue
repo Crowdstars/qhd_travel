@@ -1,61 +1,60 @@
 <template>
   <div>
-    <el-row :gutter="24">
-      <el-col :lg="12">
+    <el-row :gutter="24" >
+      <el-col :lg="12" >
         <div class="date">
           <p class="inner">截止：{{endDate}}</p>
         </div>
         <br>
-        <br>
+        <!-- <br> -->
         <p class="title">
           千岛湖
           <br>
-酒店详情分析
+          酒店详情分析
         </p>
       </el-col>
       <el-col :lg="4">
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.monthNumCumulant}}条
+          <span class="value">{{commentKeyIndicatorModel.monthNumCumulant}}条</span>
           <br>
           <span class="keyIndicatorKey">本月累积量</span>
         </p>
 
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.yearNumCumulant}}条
+          <span>{{commentKeyIndicatorModel.yearNumCumulant}}条</span>
           <br>
           <span class="keyIndicatorKey">本年累积量</span>
         </p>
       </el-col>
       <el-col :lg="4">
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.monthNumChange}}条
+          <span>{{commentKeyIndicatorModel.monthNumChange}}条</span>
           <br>
-          <span class="keyIndicatorKey">同比变化量</span>
+          <span class="keyIndicatorKey2">同比变化量</span>
         </p>
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.yearNumChange}}条
+          <span>{{commentKeyIndicatorModel.yearNumChange}}条</span>
           <br>
-          <span class="keyIndicatorKey">同比变化量</span>
+          <span class="keyIndicatorKey2">同比变化量</span>
         </p>
       </el-col>
       <el-col :lg="4">
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.monthNumPercent}}
+          <span>{{commentKeyIndicatorModel.monthNumPercent}}</span>
           <br>
-          <span class="keyIndicatorKey">同比增长率</span>
+          <span class="keyIndicatorKey3">同比增长率</span>
         </p>
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.yearNumPercent}}
+          <span>{{commentKeyIndicatorModel.yearNumPercent}}</span>
           <br>
-          <span class="keyIndicatorKey">同比增长率</span>
+          <span class="keyIndicatorKey3">同比增长率</span>
         </p>
       </el-col>
     </el-row>
 
     <el-row :gutter="24">
       <el-col :lg="12">
-        <p class="chartTitle">酒店评分分布</p>
-
+        <p class="chartTitle">酒店评分 / 评论数分布图</p>
         <div class="chartBoard">
           <el-row :gutter="24">
             <el-col :lg="12">
@@ -70,7 +69,7 @@
       <el-col :lg="12">
         <p class="chartTitle">酒店评论数变化图</p>
         <div class="chartBoard">
-          <line-charts :id="hotelDetailsId"></line-charts>
+          <bar-charts :id="hotelDetailsId"></bar-charts>
         </div>
       </el-col>
     </el-row>
@@ -78,10 +77,9 @@
 </template>
 
 <script>
-import LineCharts from "../components/lineCharts/LineCharts";
 import PiesChart from "../components/pieCharts/PiesChart";
 import PieCharts from "../components/pieCharts/pieCharts";
-
+import BarCharts from "../components/barCharts/BarCharts";
 import { IdData } from "../components/pieCharts/util";
 import {
   getHotelKeyData,
@@ -91,12 +89,13 @@ import {
 import { debounce } from "@/utils";
 import { getEndDate } from "@/api/dataView";
 
+
 export default {
   name: "elHeaderView",
   components: {
-    LineCharts,
     PiesChart,
-    PieCharts
+    PieCharts,
+    BarCharts
   },
   props: {
     contentHeight: {
@@ -166,7 +165,7 @@ export default {
         });
       });
     },
-    //设置酒店餐馆评分
+    //设置酒店评分
     SetOptionHotelScoreData() {
       let self = this;
       getHotelPieChartsScore().then(res => {
@@ -204,28 +203,34 @@ h1 {
   font-family: Georgia;
 }
 
-.keyIndicatorValue {
+.keyIndicatorValue{
   margin-top: 50px;
   font-size: 24px;
   font-family: SourceHanSansSC-Bold;
-  font-weight: bold;
-  color: rgba(79, 83, 89, 1);
+  font-weight: bolder;
+  color: #4F5359;
 }
 
-.keyIndicatorKey {
+.keyIndicatorKey, .keyIndicatorKey2, .keyIndicatorKey3 {
+  margin-left: 10px;
   font-size: 14px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
   color: rgba(146, 149, 155, 1);
 }
 
-.date {
-  margin-top: 50px;
+.keyIndicatorKey2{
+  margin-left: 20px;
 }
-
+.keyIndicatorKey3{
+ margin-left: 20px; 
+}
+.value{
+  margin-left: 13px;
+}
 .inner {
-  font-size: 14px;
-  width: 135px;
+  font-size: 13px;
+  width: 130px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
 
@@ -239,11 +244,17 @@ h1 {
   border: 1px solid rgba(236, 237, 240, 1);
   padding: 5px;
 }
-
+.chartTitle{
+  font-size: 18px;
+  color: #4F5359;
+  font-weight: Medium;
+  font-family: SourceHanSansSC-Bold; 
+}
 .title {
   font-size: 32px;
   font-family: SourceHanSansSC-Bold;
-  font-weight: bold;
-  color: rgba(79, 83, 89, 1);
+  font-weight: bolder;
+  color: #4F5359;
 }
+
 </style>

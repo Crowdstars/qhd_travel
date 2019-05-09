@@ -10,7 +10,7 @@
           </p>
 
           <div style="display: flex;justify-content: flex-start;align-items: center">
-            <el-rate v-model="item.commentScore" allow-half="true" :disabled="true"></el-rate>
+            <el-rate v-model="item.commentScore" :disabled="true"></el-rate>
             <span class="shop-score">{{item.commentScore}}</span>
             &nbsp;|&nbsp;
             <span class="comment">{{item.commentNumber}}</span>

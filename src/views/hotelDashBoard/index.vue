@@ -2,7 +2,7 @@
     <div style="overflow: scroll">
         <img src="../../assets/DetailsImgs/bg.png" style="width: 100%;height: 50%">
 
-        <elHeader-view style="margin-left:250px;margin-right: 250px;margin-top: -10%; font-size: 10px"></elHeader-view>
+        <elHeader-view style="margin-left:250px;margin-right: 250px;margin-top: -11%; font-size: 10px"></elHeader-view>
 
         <elSection-view style="margin: 0 250px;font-size: 10px"></elSection-view>
         <elFooter-view style="margin: 0 250px;font-size: 10px"></elFooter-view>

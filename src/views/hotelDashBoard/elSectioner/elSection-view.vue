@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div style="margin: 10px; margin-top:80px;">
-      <img src="../../../assets/DetailsImgs/listIcon.png" style="width: 10px;height: 15px; margin-right:15px;">
-      <span class="chartTitle" style="font-size: 18px;">酒店列表</span>
+    <div style="margin-bottom: 10px; margin-top:100px;">
+      <img
+        src="../../../assets/DetailsImgs/listIcon.png"
+        style="width: 15px;height: 15px; margin-right:5px;"
+      >
+      <span class="chartTitle">酒店列表</span>
     </div>
     <div class="select-style">
       <div class="horizontal left top padding10 text-main">
@@ -37,34 +40,43 @@
                  background:rgba(247,247,247,1);margin-left: 2px;
                  margin-top: 10px;margin-right: 2px"
         >
-          <el-col :lg="8">
+          <el-col :lg="4">
             <span class="fontStyle small-font">排序方式</span>
             &nbsp;&nbsp;
             <i class="el-icon-d-arrow-right"></i>
           </el-col>
-          
-          <el-col :lg="8">
-            <el-row :gutter="8" style="display: flex;align-items: center">
-              <span class="fontStyle small-font" style="text-align: right">评分</span>
-              <div style="display: flex;flex-direction: column">
-                <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(1,1)"></i>
-                <i class="el-icon-arrow-down" style="cursor: pointer" @click="sortList(1,-1)"></i>
-              </div>
-            </el-row>
+          <el-col :lg="5">
+            <el-button type="text" class="fontStyle small-font" :autofocus="autoFocus()" @click="sortList(1,-1)">
+              评分从高到低
+              <i class="el-icon-download el-icon--right"></i>
+            </el-button>
           </el-col>
-          <el-col :lg="8">
-            <el-row :gutter="16" style="display: flex;align-items: center">
-              <span class="fontStyle small-font">评论数量</span>
-
-              <div style="display: flex;flex-direction: column">
-                <i class="el-icon-arrow-up" style="cursor: pointer" @click="sortList(2,1)"></i>
-                <i class="el-icon-arrow-down" style="cursor: pointer" @click="sortList(2,-1)"></i>
-              </div>
-            </el-row>
+          <el-col :lg="5">
+            <el-button type="text" class="fontStyle small-font" @click="sortList(1,1)">
+              评分从低到高
+              <i class="el-icon-upload2 el-icon--right"></i>
+            </el-button>
+          </el-col>
+          <el-col :lg="5">
+            <el-button type="text" class="fontStyle small-font" @click="sortList(2,-1)">
+              评论数从高到低
+              <i class="el-icon-download el-icon--right"></i>
+            </el-button>
+          </el-col>
+          <el-col :lg="5">
+            <el-button type="text" class="fontStyle small-font" @click="sortList(2,1)">
+              评论数从低到高
+              <i class="el-icon-upload2 el-icon--right"></i>
+            </el-button>
           </el-col>
         </el-row>
 
-        <shop-row v-for="item in hotelList" :key="item" :item="item" style="margin-top: 20px;"/>
+        <shop-row
+          v-for="item in hotelList"
+          :key="item.value"
+          :item="item"
+          style="margin-top: 20px;"
+        />
         <div style="display: flex;justify-content: center">
           <el-pagination
             style="margin-top: 5px"
@@ -80,7 +92,7 @@
       <el-col :lg="7">
         <div
           style="margin-top: 10px;background:rgba(255,255,255,1);
-border:1px solid rgba(236, 237, 240, 1);padding: 5px"
+                 border:1px solid rgba(236, 237, 240, 1);padding: 5px"
         >
           <div>
             <div style="display: flex;justify-content: space-around;text-align: center">
@@ -105,7 +117,7 @@ border:1px solid rgba(236, 237, 240, 1);padding: 5px"
             v-for="(item,index) in commentList"
             :item="item"
             :index="index"
-            :key="item"
+            :key="item.value"
             style="margin-top: 5px"
           />
         </div>
@@ -120,10 +132,9 @@ import { site_list } from "../base/dict";
 import chooseList from "../components/chooseList/chooseList";
 import shopRow from "../components/shop/shop-row";
 import commentRow from "../components/comment/comment-row";
-// import {getCuisine, getRestaurantList, getShopRankList} from "@/api/restaurant";
+
 import { getHotelSend, getHotelList, getHotelRankList } from "@/api/hotel";
 import { constants } from "crypto";
-// import {getTradeHotelRankList} from "@/api/dataView";
 
 export default {
   name: "elSectionView",
@@ -152,10 +163,10 @@ export default {
       hotelList: [],
       page: {
         currPage: 0,
-        pageSize: 6,
+        pageSize: 5,
         totalPage: 0,
         next: 1,
-        // total: 0
+        total: 0
       },
       //餐饮排行列表
       hotelsList: [],
@@ -179,8 +190,10 @@ export default {
       this.selectBusines = value;
       //商圈改变后，触发菜系的变化
       this.initTrend();
+      this.autoFocus();
     },
     initTrend() {
+      console.log("执行initTrend函数");
       var params = this.selectBusines.replace(/\([^\)]*\)/g, "");
       this.trendList = [];
       getHotelSend({
@@ -198,6 +211,7 @@ export default {
       //触发列表的改变
       this.page.currPage = 1;
       this.initHotelList();
+      this.autoFocus();
     },
     //初始化菜系
     initHotelList() {
@@ -207,7 +221,7 @@ export default {
       var params = {
         businessArea: this.selectBusines.replace(/\([^\)]*\)/g, ""),
         hotelRate: this.selectTrend.replace(/\([^\)]*\)/g, ""), //菜系（默认加载全部shopCook: ”全部“）
-        pageSize: 6, //每页显示餐馆数量
+        pageSize: 5, //每页显示餐馆数量
         sortWay: this.sortWay, //排序方式，降序传-1，升序传1 默认传-1
         commentType: this.commentType, //排序关键字，按照评分传1，按照评论数量传2 默认传1
         currPage: this.page.currPage // 当前页面
@@ -215,11 +229,8 @@ export default {
 
       getHotelList(params).then(res => {
         this.hotelList = res.data.hotellist;
-        console.log('显示酒店列表 怎么出现了未知数');
-        console.log(this.hotelList);
+        console.log("显示酒店列表 怎么出现了未知数");
         this.page = res.page;
-        console.log(this.page.totalPage)
-        console.log(this.page.total)
       });
     },
     //排序方式
@@ -266,14 +277,21 @@ export default {
         this.allComments = res.data;
         this.commentList = this.allComments.goodList;
       });
+    },
+    autoFocus(){
+      console.log("执行autoFocus函数")
+      return true;
     }
   }
 };
 </script>
 
 <style lang="less">
-.chartTitle{
-  font-size: 26px;
+.chartTitle {
+  font-size: 18px;
+  color: #4f5359;
+  font-weight: Medium;
+  font-family: SourceHanSansSC-Bold;
 }
 // .sl-list {
 //   margin-top: 20px;
@@ -289,7 +307,6 @@ export default {
     好评榜 差评榜 被选中时候 与未选中时候样式
     */
 .select-comment {
-  
   font-size: 14px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
@@ -309,15 +326,19 @@ export default {
   width: 40px;
   height: 40px;
 }
-.noshrink{
+.noshrink {
   font-size: 15px;
 }
-.small-font{
+.small-font {
   font-size: 14px;
 }
+i:hover {
+  color: rgba(82, 153, 240, 1);
+}
 .fontStyle {
+  font-size: 14px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
-  color: rgba(79, 83, 89, 1);
+  color: #4f5359;
 }
 </style>

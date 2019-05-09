@@ -78,13 +78,13 @@ export function getHotelRankList() {
 /**
  * 4.6 评论文本分析
  */
-// // 4.6.1 获取不同方面评论数目（例如： 性价比： 250，位置： 300，  服务： 300）
-// export function getHotelLabelList() {
-//     return request({
-//         url: '/api/qdhhotelcomtagsum',
-//         method: 'post',
-//     })
-// }
+// 4.6.1 获取不同方面评论数目（例如： 性价比： 250，位置： 300，  服务： 300）
+export function getHotelLabelList() {
+    return request({
+        url: '/api/qdhhotelcomtagsum',
+        method: 'post',
+    })
+}
 
 // 4.6.2 获取具体方面的评论
 /**
@@ -95,7 +95,7 @@ export function getHotelRankList() {
  */
 export function getHotelComment(param) {
     return request({
-        url: '/api/hotelpage/keywords',
+        url: '/api/qdhhotelcomfeatureword',
         method: 'post',
         data: param
     })

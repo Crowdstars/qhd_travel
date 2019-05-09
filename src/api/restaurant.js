@@ -48,10 +48,17 @@ export function getShopRankList() {
 /**
  * 3-5. 餐饮评论智能模块
  */
-export function getShopComment(param) {
-
+// 3.5.1 餐饮评论智能模块评论数量统计
+export function getShopLabelList() {
     return request({
-        url: 'api/shoparea/comment/keywords',
+        url: '/api/restaurantpage/keywordcount',
+        method: 'post',
+    })
+}
+// 3.5.2 餐饮评论智能模块 获取评论内容（默认返回6条数据）
+export function getShopComment(param) {
+    return request({
+        url: '/api/restaurantpage/keywords',
         method: 'post',
         data:param
     })

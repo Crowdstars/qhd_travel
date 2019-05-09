@@ -6,7 +6,6 @@
           <p class="inner">截止：{{endDate}}</p>
         </div>
         <br>
-        <br>
         <p class="title">
           千岛湖
           <br>
@@ -30,31 +29,31 @@
         <p class="keyIndicatorValue">
           {{commentKeyIndicatorModel.monthNumChange}}条
           <br>
-          <span class="keyIndicatorKey">同比变化量</span>
+          <span class="keyIndicatorKey2">同比变化量</span>
         </p>
         <p class="keyIndicatorValue">
           {{commentKeyIndicatorModel.yearNumChange}}条
           <br>
-          <span class="keyIndicatorKey">同比变化量</span>
+          <span class="keyIndicatorKey2">同比变化量</span>
         </p>
       </el-col>
       <el-col :lg="4">
         <p class="keyIndicatorValue">
           {{commentKeyIndicatorModel.monthNumPercent}}
           <br>
-          <span class="keyIndicatorKey">同比增长率</span>
+          <span class="keyIndicatorKey3">同比增长率</span>
         </p>
         <p class="keyIndicatorValue">
-          {{commentKeyIndicatorModel.yearMonthPercent}}
+          {{commentKeyIndicatorModel.yearNumPercent}}
           <br>
-          <span class="keyIndicatorKey">同比增长率</span>
+          <span class="keyIndicatorKey3">同比增长率</span>
         </p>
       </el-col>
     </el-row>
 
     <el-row :gutter="24">
       <el-col :lg="12">
-        <p class="chartTitle">餐饮评论数评分分布</p>
+        <p class="chartTitle">餐饮评论数 / 评分分布</p>
 
         <div class="chartBoard">
           <el-row :gutter="24">
@@ -70,7 +69,7 @@
       <el-col :lg="12">
         <p class="chartTitle">餐饮评论数变化图</p>
         <div class="chartBoard">
-          <line-charts :id="restaurantDetailsId"></line-charts>
+          <bar-charts :id="restaurantDetailsId"></bar-charts>
         </div>
       </el-col>
     </el-row>
@@ -78,9 +77,9 @@
 </template>
 
 <script>
-import LineCharts from "../components/lineCharts/LineCharts";
 import PiesChart from "../components/pieCharts/PiesChart";
 import PieCharts from "../components/pieCharts/pieCharts";
+import BarCharts from "../components/barCharts/BarCharts";
 
 import { IdData } from "../components/pieCharts/util";
 import {
@@ -94,7 +93,7 @@ import { getEndDate } from "@/api/dataView";
 export default {
   name: "elHeaderView",
   components: {
-    LineCharts,
+    BarCharts,
     PiesChart,
     PieCharts
   },
@@ -118,7 +117,7 @@ export default {
         //本月同比数量变化量
         monthNumPercent: "0",
         //本年同比数量变化量
-        yearMonthPercent: "0",
+        yearNumPercent: "0",
         //本月评论数量是否上升 0 表示下降 1表示上升
         isMonthNumRise: 0,
         //本年评分数量是否上升 0 表示下降 1表示上升
@@ -147,6 +146,7 @@ export default {
       getShopKeyData().then(res => {
         if (res.code === 0) {
           this.commentKeyIndicatorModel = res.data.commentKeyIndicatorModel;
+          console.log(this.commentKeyIndicatorModel);
         } else {
           this.$Message.error(res.message);
         }
@@ -212,20 +212,23 @@ h1 {
   color: rgba(79, 83, 89, 1);
 }
 
-.keyIndicatorKey {
+.keyIndicatorKey, .keyIndicatorKey2, .keyIndicatorKey3{
   font-size: 14px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
   color: rgba(146, 149, 155, 1);
 }
+.keyIndicatorKey2{
+  margin-left: 10px;
+}
 
-.date {
-  margin-top: 50px;
+.keyIndicatorKey3{
+  margin-left: 15px;
 }
 
 .inner {
-  font-size: 14px;
-  width: 135px;
+  font-size: 13px;
+  width: 130px;
   font-family: SourceHanSansSC-Regular;
   font-weight: 400;
 
@@ -240,10 +243,16 @@ h1 {
   padding: 5px;
 }
 
+.chartTitle{
+  font-size: 18px;
+  color: #4F5359;
+  font-weight: Medium;
+  font-family: SourceHanSansSC-Bold; 
+}
 .title {
   font-size: 32px;
   font-family: SourceHanSansSC-Bold;
-  font-weight: bold;
-  color: rgba(79, 83, 89, 1);
+  font-weight: bolder;
+  color: #4F5359;
 }
 </style>

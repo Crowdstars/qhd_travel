@@ -24,7 +24,9 @@
               <span class="articlePoints">分</span>
             </el-col>
             <el-col :lg="8" :xl="8" :offset="1">
-              <span v-html="showText(keyIndicatorData.monthScoreChange)">{{keyIndicatorData.monthScoreChange}}</span>
+              <span
+                v-html="showText(keyIndicatorData.monthScoreChange)"
+              >{{keyIndicatorData.monthScoreChange}}</span>
               <span class="articlePoints">分</span>
             </el-col>
             <el-col :lg="6" :xl="6" :offset="1">
@@ -45,7 +47,9 @@
               <span class="articlePoints">分</span>
             </el-col>
             <el-col :lg="8" :xl="8" :offset="1">
-              <span v-html="showText(keyIndicatorData.yearScoreChange)">{{keyIndicatorData.yearScoreChange}}</span>
+              <span
+                v-html="showText(keyIndicatorData.yearScoreChange)"
+              >{{keyIndicatorData.yearScoreChange}}</span>
               <span class="articlePoints">分</span>
             </el-col>
             <el-col :lg="6" :xl="6" :offset="1">
@@ -86,7 +90,9 @@
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
-              <span v-html="showText(keyIndicatorData.monthNumChange)">{{keyIndicatorData.monthNumChange}}</span>
+              <span
+                v-html="showText(keyIndicatorData.monthNumChange)"
+              >{{keyIndicatorData.monthNumChange}}</span>
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
@@ -107,7 +113,9 @@
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
-              <span v-html="showText(keyIndicatorData.yearNumChange)">{{keyIndicatorData.yearNumChange}}</span>
+              <span
+                v-html="showText(keyIndicatorData.yearNumChange)"
+              >{{keyIndicatorData.yearNumChange}}</span>
               <span class="articlePoints">条</span>
             </el-col>
             <el-col :lg="7" :xl="7" :offset="1">
@@ -182,7 +190,7 @@ export default {
   methods: {
     //获取关键指标数据
     getKeyIndicatorFun: function() {
-        console.log("执行getKeyIndicatorFun()函数")
+      console.log("执行getKeyIndicatorFun()函数");
       getKeyIndicator().then(res => {
         if (res.code === 0) {
           this.keyIndicatorData = res.data;
@@ -191,23 +199,29 @@ export default {
         }
       });
     },
-    showText:function(val){
-        // console.log("正在执行showText()函数")
-        var value=  '',
-            newstr='',
-            textColor='';
-        if(val.substr(0, 1) == "+"){
-            value = "+";
-            textColor = "red";
-        }
-        if(val.substr(0, 1) == "-"){
-            value = "-";
-            textColor = "chartreuse";
-        }
-        var temp = val.split(/\s/);
-        newstr = val.replace(temp[0], "<span style='color: "+textColor+";'>"+value+"</span>");
-        console.log(newstr);
-        return newstr;
+    showText: function(val) {
+      // console.log("正在执行showText()函数");
+      // console.log(typeof(val));
+      var t = val.toString();
+      var str = t.substr(0,1);
+      var value = "",
+          newstr = "",
+          textColor = "";
+      if (str == "+") {
+        value = "+";
+        textColor = "red";
+      }
+      if (str == "-") {
+        value = "-";
+        textColor = "chartreuse";
+      }
+      var temp = t.split(/\s/);
+      newstr = t.replace(
+        temp[0],
+        "<span style='color: " + textColor + ";'>" + value + "</span>"
+      );
+      console.log(newstr);
+      return newstr;
     }
   },
   mounted() {
@@ -262,7 +276,7 @@ export default {
     &-elMonth,
     &-elYear {
       color: rgb(255, 255, 255);
-    //   color:chartreuse
+      //   color:chartreuse
       font-size: 24px;
       //   font-size: 1.6vw;
     }
