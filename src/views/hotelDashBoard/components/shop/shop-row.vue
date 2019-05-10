@@ -66,6 +66,7 @@
 .text {
   margin-left: 10px;
   margin-bottom: 2px;
+
   font-size: 12px;
   font-family: SourceHanSansSC-Regular;
   // font-weight:400;
