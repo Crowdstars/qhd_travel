@@ -160,11 +160,11 @@
               <span class="elBefore">{{index + 1 }}</span>
             </el-col>
             <el-col
-              class="item-name click-cursor"
+              class="item-name"
               :lg="10"
               :xl="10"
               :title="item._id"
-              @click.native="toViewHotelDetail(item)"
+
             >{{item._id}}</el-col>
             <el-col :lg="5" :xl="5" class="fontsetNum">{{item.commentScore}}</el-col>
             <el-col :lg="5" :xl="5" class="fontsetNum">{{item.commentNumber}}</el-col>

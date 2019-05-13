@@ -194,7 +194,7 @@ export default {
     scenicSpotDetailUrl() {
       return (
         this.$config.detailUrl +
-        "/ScenicInfo?scenicName=千岛湖&token=" +
+        "/qdhscenic/dynamic?token=" +
         getToken()
       );
     },
