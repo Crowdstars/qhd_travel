@@ -200,12 +200,16 @@ export default {
       });
     },
     showText: function(val) {
-      // console.log("正在执行showText()函数");
-      // console.log(typeof(val));
+      console.log("正在执行showText()函数");
+      console.log((val));
+      var newstr = "";
+      if(val == 0){
+        newstr = t.toString();
+        return newstr;
+      }
       var t = val.toString();
       var str = t.substr(0,1);
       var value = "",
-          newstr = "",
           textColor = "";
       if (str == "+") {
         value = "+";
